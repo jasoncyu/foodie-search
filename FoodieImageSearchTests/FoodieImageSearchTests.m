@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "FourSquare.h"
 
 @interface FoodieImageSearchTests : XCTestCase
 
@@ -26,9 +27,16 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testFourSquareSearch
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    FourSquare *fourSquare = [[FourSquare alloc] init];
+    [fourSquare searchFourSquareForTerm:@"thai" completionBlock:^(NSString *searchTerm, NSArray *results, NSError *error) {
+        NSLog(@"%@", results);
+        NSLog(@"%@", error);
+        
+        XCTAssertEqual(results, @[@"asdf"], @"");
+    }];
+    
 }
 
 @end
