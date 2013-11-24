@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
+		2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368D1841947D008EFEBD /* CoreGraphics.framework */; };
+		209336901841947D008EFEBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368F1841947D008EFEBD /* UIKit.framework */; };
+		209336961841947D008EFEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 209336941841947D008EFEBD /* InfoPlist.strings */; };
+		209336981841947D008EFEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336971841947D008EFEBD /* main.m */; };
+		2093369C1841947D008EFEBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2093369B1841947D008EFEBD /* AppDelegate.m */; };
+		2093369F1841947D008EFEBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093369D1841947D008EFEBD /* Main.storyboard */; };
+		209336A21841947D008EFEBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336A11841947D008EFEBD /* ViewController.m */; };
+		209336A41841947D008EFEBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209336A31841947D008EFEBD /* Images.xcassets */; };
+		209336AB1841947D008EFEBD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209336AA1841947D008EFEBD /* XCTest.framework */; };
+		209336AC1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
+		209336AD1841947D008EFEBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368F1841947D008EFEBD /* UIKit.framework */; };
+		209336B51841947D008EFEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 209336B31841947D008EFEBD /* InfoPlist.strings */; };
+		209336B71841947D008EFEBD /* FoodieImageSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336B61841947D008EFEBD /* FoodieImageSearchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		209336AE1841947D008EFEBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209336801841947C008EFEBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 209336871841947D008EFEBD;
+			remoteInfo = FoodieImageSearch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		209336881841947D008EFEBD /* FoodieImageSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieImageSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2093368B1841947D008EFEBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2093368D1841947D008EFEBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2093368F1841947D008EFEBD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		209336931841947D008EFEBD /* FoodieImageSearch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodieImageSearch-Info.plist"; sourceTree = "<group>"; };
+		209336951841947D008EFEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		209336971841947D008EFEBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		209336991841947D008EFEBD /* FoodieImageSearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodieImageSearch-Prefix.pch"; sourceTree = "<group>"; };
+		2093369A1841947D008EFEBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2093369B1841947D008EFEBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2093369E1841947D008EFEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		209336A01841947D008EFEBD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		209336A11841947D008EFEBD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		209336A31841947D008EFEBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		209336A91841947D008EFEBD /* FoodieImageSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodieImageSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		209336AA1841947D008EFEBD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		209336B21841947D008EFEBD /* FoodieImageSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodieImageSearchTests-Info.plist"; sourceTree = "<group>"; };
+		209336B41841947D008EFEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		209336B61841947D008EFEBD /* FoodieImageSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodieImageSearchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		209336851841947D008EFEBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */,
+				209336901841947D008EFEBD /* UIKit.framework in Frameworks */,
+				2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		209336A61841947D008EFEBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209336AB1841947D008EFEBD /* XCTest.framework in Frameworks */,
+				209336AD1841947D008EFEBD /* UIKit.framework in Frameworks */,
+				209336AC1841947D008EFEBD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2093367F1841947C008EFEBD = {
+			isa = PBXGroup;
+			children = (
+				209336911841947D008EFEBD /* FoodieImageSearch */,
+				209336B01841947D008EFEBD /* FoodieImageSearchTests */,
+				2093368A1841947D008EFEBD /* Frameworks */,
+				209336891841947D008EFEBD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		209336891841947D008EFEBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				209336881841947D008EFEBD /* FoodieImageSearch.app */,
+				209336A91841947D008EFEBD /* FoodieImageSearchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2093368A1841947D008EFEBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2093368B1841947D008EFEBD /* Foundation.framework */,
+				2093368D1841947D008EFEBD /* CoreGraphics.framework */,
+				2093368F1841947D008EFEBD /* UIKit.framework */,
+				209336AA1841947D008EFEBD /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		209336911841947D008EFEBD /* FoodieImageSearch */ = {
+			isa = PBXGroup;
+			children = (
+				2093369A1841947D008EFEBD /* AppDelegate.h */,
+				2093369B1841947D008EFEBD /* AppDelegate.m */,
+				2093369D1841947D008EFEBD /* Main.storyboard */,
+				209336A01841947D008EFEBD /* ViewController.h */,
+				209336A11841947D008EFEBD /* ViewController.m */,
+				209336A31841947D008EFEBD /* Images.xcassets */,
+				209336921841947D008EFEBD /* Supporting Files */,
+			);
+			path = FoodieImageSearch;
+			sourceTree = "<group>";
+		};
+		209336921841947D008EFEBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				209336931841947D008EFEBD /* FoodieImageSearch-Info.plist */,
+				209336941841947D008EFEBD /* InfoPlist.strings */,
+				209336971841947D008EFEBD /* main.m */,
+				209336991841947D008EFEBD /* FoodieImageSearch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		209336B01841947D008EFEBD /* FoodieImageSearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				209336B61841947D008EFEBD /* FoodieImageSearchTests.m */,
+				209336B11841947D008EFEBD /* Supporting Files */,
+			);
+			path = FoodieImageSearchTests;
+			sourceTree = "<group>";
+		};
+		209336B11841947D008EFEBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				209336B21841947D008EFEBD /* FoodieImageSearchTests-Info.plist */,
+				209336B31841947D008EFEBD /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		209336871841947D008EFEBD /* FoodieImageSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 209336BA1841947D008EFEBD /* Build configuration list for PBXNativeTarget "FoodieImageSearch" */;
+			buildPhases = (
+				209336841841947D008EFEBD /* Sources */,
+				209336851841947D008EFEBD /* Frameworks */,
+				209336861841947D008EFEBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodieImageSearch;
+			productName = FoodieImageSearch;
+			productReference = 209336881841947D008EFEBD /* FoodieImageSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		209336A81841947D008EFEBD /* FoodieImageSearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 209336BD1841947D008EFEBD /* Build configuration list for PBXNativeTarget "FoodieImageSearchTests" */;
+			buildPhases = (
+				209336A51841947D008EFEBD /* Sources */,
+				209336A61841947D008EFEBD /* Frameworks */,
+				209336A71841947D008EFEBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				209336AF1841947D008EFEBD /* PBXTargetDependency */,
+			);
+			name = FoodieImageSearchTests;
+			productName = FoodieImageSearchTests;
+			productReference = 209336A91841947D008EFEBD /* FoodieImageSearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		209336801841947C008EFEBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = JasonMimee;
+				TargetAttributes = {
+					209336A81841947D008EFEBD = {
+						TestTargetID = 209336871841947D008EFEBD;
+					};
+				};
+			};
+			buildConfigurationList = 209336831841947C008EFEBD /* Build configuration list for PBXProject "FoodieImageSearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2093367F1841947C008EFEBD;
+			productRefGroup = 209336891841947D008EFEBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				209336871841947D008EFEBD /* FoodieImageSearch */,
+				209336A81841947D008EFEBD /* FoodieImageSearchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		209336861841947D008EFEBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
+				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
+				2093369F1841947D008EFEBD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		209336A71841947D008EFEBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209336B51841947D008EFEBD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		209336841841947D008EFEBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209336A21841947D008EFEBD /* ViewController.m in Sources */,
+				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,
+				209336981841947D008EFEBD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		209336A51841947D008EFEBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209336B71841947D008EFEBD /* FoodieImageSearchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		209336AF1841947D008EFEBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 209336871841947D008EFEBD /* FoodieImageSearch */;
+			targetProxy = 209336AE1841947D008EFEBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		209336941841947D008EFEBD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				209336951841947D008EFEBD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2093369D1841947D008EFEBD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2093369E1841947D008EFEBD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		209336B31841947D008EFEBD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				209336B41841947D008EFEBD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		209336B81841947D008EFEBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		209336B91841947D008EFEBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		209336BB1841947D008EFEBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
+				INFOPLIST_FILE = "FoodieImageSearch/FoodieImageSearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		209336BC1841947D008EFEBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
+				INFOPLIST_FILE = "FoodieImageSearch/FoodieImageSearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		209336BE1841947D008EFEBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FoodieImageSearch.app/FoodieImageSearch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FoodieImageSearchTests/FoodieImageSearchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		209336BF1841947D008EFEBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FoodieImageSearch.app/FoodieImageSearch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
+				INFOPLIST_FILE = "FoodieImageSearchTests/FoodieImageSearchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		209336831841947C008EFEBD /* Build configuration list for PBXProject "FoodieImageSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209336B81841947D008EFEBD /* Debug */,
+				209336B91841947D008EFEBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		209336BA1841947D008EFEBD /* Build configuration list for PBXNativeTarget "FoodieImageSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209336BB1841947D008EFEBD /* Debug */,
+				209336BC1841947D008EFEBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		209336BD1841947D008EFEBD /* Build configuration list for PBXNativeTarget "FoodieImageSearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209336BE1841947D008EFEBD /* Debug */,
+				209336BF1841947D008EFEBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 209336801841947C008EFEBD /* Project object */;
+}
