@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FourSquareVenue.h"
 
-@interface FourSquareVenue : NSObject
-@property NSString *id;
-@property NSString *name;
+@interface FourSquarePhoto : NSObject
+@property UIImage *photo;
+@property FourSquareVenue *venue;
 @end

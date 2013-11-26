@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "FourSquare.h"
+#import "FourSquareVenue.h"
+#import "FourSquarePhoto.h"
 
 @interface FoodieImageSearchTests : XCTestCase
 
@@ -30,13 +32,14 @@
 - (void)testFourSquareSearch
 {
     FourSquare *fourSquare = [[FourSquare alloc] init];
-    [fourSquare searchFourSquareForTerm:@"thai" completionBlock:^(NSString *searchTerm, NSArray *results, NSError *error) {
-        NSLog(@"%@", results);
-        NSLog(@"%@", error);
-        
-        XCTAssertEqual(results, @[@"asdf"], @"");
+    __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
+    [fourSquare getVenuesForTerm:@"thai" completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
+        venue = venues[0];
     }];
     
+    [fourSquare getPhotosForVenue:venue completionBlock:^(NSMutableArray *photos, NSError *error) {
+        XCTAssertEqual([photos count], 5, "Size wrong");
+    }];
 }
 
 @end

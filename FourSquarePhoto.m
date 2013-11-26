@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 JasonMimee. All rights reserved.
 //
 
-#import "FourSquareVenue.h"
+#import "FourSquarePhoto.h"
 
-@implementation FourSquareVenue
+@implementation FourSquarePhoto
 @end

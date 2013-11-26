@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void (^FourSquareSearchCompletionBlock)(NSString *searchTerm, NSArray *results, NSError *error);
-typedef void (^FourSquarePhotoCompletionBlock)(UIImage *photoImage, NSError *error);
+#import "FourSquareVenue.h"
+typedef void (^FourSquareVenueSearchCompletionBlock)(NSString *searchTerm, NSArray *venues, NSError *error);
+typedef void (^FourSquarePhotoCompletionBlock)(NSMutableArray *photos, NSError *error);
 
 @interface FourSquare : NSObject
-- (void)searchFourSquareForTerm:(NSString *) term completionBlock:(FourSquareSearchCompletionBlock) completionBlock;
+- (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
+- (void)getPhotosForVenue:(FourSquareVenue *)venue completionBlock:(FourSquarePhotoCompletionBlock) completionBlock;
+- (void)testSession;
 @end

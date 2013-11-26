@@ -22,7 +22,8 @@
 		209336B51841947D008EFEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 209336B31841947D008EFEBD /* InfoPlist.strings */; };
 		209336B71841947D008EFEBD /* FoodieImageSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336B61841947D008EFEBD /* FoodieImageSearchTests.m */; };
 		209336C2184194A3008EFEBD /* FourSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C1184194A3008EFEBD /* FourSquare.m */; };
-		209336C51841AB36008EFEBD /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C41841AB36008EFEBD /* FourSquareVenue.m */; };
+		209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C41841AB36008EFEBD /* FourSquarePhoto.m */; };
+		209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C81842987D008EFEBD /* FourSquareVenue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +58,10 @@
 		209336B61841947D008EFEBD /* FoodieImageSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodieImageSearchTests.m; sourceTree = "<group>"; };
 		209336C0184194A3008EFEBD /* FourSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquare.h; path = FoodieImageSearch/FourSquare.h; sourceTree = "<group>"; };
 		209336C1184194A3008EFEBD /* FourSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquare.m; path = FoodieImageSearch/FourSquare.m; sourceTree = "<group>"; };
-		209336C31841AB36008EFEBD /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareVenue.h; sourceTree = "<group>"; };
-		209336C41841AB36008EFEBD /* FourSquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareVenue.m; sourceTree = "<group>"; };
+		209336C31841AB36008EFEBD /* FourSquarePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquarePhoto.h; sourceTree = "<group>"; };
+		209336C41841AB36008EFEBD /* FourSquarePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquarePhoto.m; sourceTree = "<group>"; };
+		209336C71842987D008EFEBD /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareVenue.h; path = FoodieImageSearch/FourSquareVenue.h; sourceTree = "<group>"; };
+		209336C81842987D008EFEBD /* FourSquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareVenue.m; path = FoodieImageSearch/FourSquareVenue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				209336C0184194A3008EFEBD /* FourSquare.h */,
-				209336C31841AB36008EFEBD /* FourSquareVenue.h */,
-				209336C41841AB36008EFEBD /* FourSquareVenue.m */,
 				209336C1184194A3008EFEBD /* FourSquare.m */,
+				209336C31841AB36008EFEBD /* FourSquarePhoto.h */,
+				209336C41841AB36008EFEBD /* FourSquarePhoto.m */,
+				209336C71842987D008EFEBD /* FourSquareVenue.h */,
+				209336C81842987D008EFEBD /* FourSquareVenue.m */,
 			);
 			name = FourSquare;
 			sourceTree = "<group>";
@@ -268,9 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				209336C2184194A3008EFEBD /* FourSquare.m in Sources */,
-				209336C51841AB36008EFEBD /* FourSquareVenue.m in Sources */,
+				209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */,
 				209336A21841947D008EFEBD /* ViewController.m in Sources */,
 				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,
+				209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */,
 				209336981841947D008EFEBD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +486,7 @@
 				209336BC1841947D008EFEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		209336BD1841947D008EFEBD /* Build configuration list for PBXNativeTarget "FoodieImageSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +495,7 @@
 				209336BF1841947D008EFEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
