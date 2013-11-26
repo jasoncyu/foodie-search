@@ -24,6 +24,9 @@
 		209336C2184194A3008EFEBD /* FourSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C1184194A3008EFEBD /* FourSquare.m */; };
 		209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C41841AB36008EFEBD /* FourSquarePhoto.m */; };
 		209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C81842987D008EFEBD /* FourSquareVenue.m */; };
+		209E39BC18446747001F18A5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39BB18446747001F18A5 /* ViewController.xib */; };
+		209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E39C318446BCF001F18A5 /* PhotoCell.m */; };
+		209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39C618446C63001F18A5 /* PhotoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,10 @@
 		209336C41841AB36008EFEBD /* FourSquarePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquarePhoto.m; sourceTree = "<group>"; };
 		209336C71842987D008EFEBD /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareVenue.h; path = FoodieImageSearch/FourSquareVenue.h; sourceTree = "<group>"; };
 		209336C81842987D008EFEBD /* FourSquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareVenue.m; path = FoodieImageSearch/FourSquareVenue.m; sourceTree = "<group>"; };
+		209E39BB18446747001F18A5 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		209E39C218446BCF001F18A5 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCell.h; path = FoodieImageSearch/PhotoCell.h; sourceTree = "<group>"; };
+		209E39C318446BCF001F18A5 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCell.m; path = FoodieImageSearch/PhotoCell.m; sourceTree = "<group>"; };
+		209E39C618446C63001F18A5 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +98,7 @@
 		2093367F1841947C008EFEBD = {
 			isa = PBXGroup;
 			children = (
+				209E39C518446BD9001F18A5 /* View */,
 				209336C61841B865008EFEBD /* FourSquare */,
 				209336911841947D008EFEBD /* FoodieImageSearch */,
 				209336B01841947D008EFEBD /* FoodieImageSearchTests */,
@@ -127,6 +135,7 @@
 				2093369D1841947D008EFEBD /* Main.storyboard */,
 				209336A01841947D008EFEBD /* ViewController.h */,
 				209336A11841947D008EFEBD /* ViewController.m */,
+				209E39BB18446747001F18A5 /* ViewController.xib */,
 				209336A31841947D008EFEBD /* Images.xcassets */,
 				209336921841947D008EFEBD /* Supporting Files */,
 			);
@@ -173,6 +182,16 @@
 				209336C81842987D008EFEBD /* FourSquareVenue.m */,
 			);
 			name = FourSquare;
+			sourceTree = "<group>";
+		};
+		209E39C518446BD9001F18A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				209E39C218446BCF001F18A5 /* PhotoCell.h */,
+				209E39C318446BCF001F18A5 /* PhotoCell.m */,
+				209E39C618446C63001F18A5 /* PhotoCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +272,9 @@
 			files = (
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
+				209E39BC18446747001F18A5 /* ViewController.xib in Resources */,
 				2093369F1841947D008EFEBD /* Main.storyboard in Resources */,
+				209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +296,7 @@
 				209336C2184194A3008EFEBD /* FourSquare.m in Sources */,
 				209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */,
 				209336A21841947D008EFEBD /* ViewController.m in Sources */,
+				209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */,
 				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,
 				209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */,
 				209336981841947D008EFEBD /* main.m in Sources */,
