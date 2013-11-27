@@ -11,6 +11,8 @@
 #import "FourSquareVenue.h"
 #import "FourSquarePhoto.h"
 #import "PhotoCell.h"
+#import "PhotoDetailViewController.h"
+
 @import SystemConfiguration;
 
 @interface PhotoCollectionViewController () <UITextFieldDelegate>
@@ -61,6 +63,14 @@
     return CGSizeMake(100, 100);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FourSquarePhoto *photo = self.fourSquarePhotos[indexPath.item];
+    PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:photo];
+//    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -81,7 +91,7 @@
 
             [fourSquare getPhotosForVenue:venue completionBlock:^(NSMutableArray *photos, NSError *error) {
                 if (photos && [photos count] > 0) {
-                    self.fourSquarePhotos = photos;
+                    [self.fourSquarePhotos addObjectsFromArray:photos];
                 } else {
                     DLog(@"No photos found");
                 }
@@ -127,5 +137,11 @@
         CFRelease(reachability);
     }
     return _isDataSourceAvailable;
+}
+
+- (void)dismiss
+{
+    DLog(@"dismiss");
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

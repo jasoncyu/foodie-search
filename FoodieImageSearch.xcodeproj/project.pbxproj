@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204FC43518459C250006A75D /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 204FC43318459C250006A75D /* PhotoDetailViewController.m */; };
+		204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 204FC43418459C250006A75D /* PhotoDetailViewController.xib */; };
 		2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
 		2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368D1841947D008EFEBD /* CoreGraphics.framework */; };
 		209336901841947D008EFEBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368F1841947D008EFEBD /* UIKit.framework */; };
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		204FC43218459C250006A75D /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
+		204FC43318459C250006A75D /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		204FC43418459C250006A75D /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
 		209336881841947D008EFEBD /* FoodieImageSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieImageSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093368B1841947D008EFEBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2093368D1841947D008EFEBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +195,9 @@
 				209E39C218446BCF001F18A5 /* PhotoCell.h */,
 				209E39C318446BCF001F18A5 /* PhotoCell.m */,
 				209E39C618446C63001F18A5 /* PhotoCell.xib */,
+				204FC43218459C250006A75D /* PhotoDetailViewController.h */,
+				204FC43318459C250006A75D /* PhotoDetailViewController.m */,
+				204FC43418459C250006A75D /* PhotoDetailViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 			files = (
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
+				204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */,
 				209E39BC18446747001F18A5 /* PhotoCollectionViewController.xib in Resources */,
 				2093369F1841947D008EFEBD /* Main.storyboard in Resources */,
 				209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */,
@@ -295,6 +304,7 @@
 			files = (
 				209336C2184194A3008EFEBD /* FourSquare.m in Sources */,
 				209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */,
+				204FC43518459C250006A75D /* PhotoDetailViewController.m in Sources */,
 				209336A21841947D008EFEBD /* PhotoCollectionViewController.m in Sources */,
 				209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */,
 				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,

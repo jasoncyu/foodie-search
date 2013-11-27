@@ -22,6 +22,8 @@
 @property NSURLConnection *venuesConnection;
 @property NSURLConnection *photosConnection;
 @property NSURLSession *session;
+
+
 @end
 
 @implementation FourSquare
@@ -124,9 +126,10 @@
         //First 5 images
         int i = 0;
         for (NSMutableDictionary *objPhoto in objPhotos) {
-            NSString *photoURL = [NSString stringWithFormat:@"%@width100%@",
+            NSString *photoURL = [NSString stringWithFormat:@"%@original%@",
                                   objPhoto[@"prefix"],
                                   objPhoto[@"suffix"]];
+            DLog(@"%@", photoURL);
             FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
             UIImage *photoMaybe = [[UIImage alloc]
              initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
