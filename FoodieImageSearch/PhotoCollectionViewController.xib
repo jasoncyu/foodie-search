@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoCollectionViewController">
             <connections>
                 <outlet property="collectionView" destination="T8L-V6-d3n" id="cOK-rd-YnT"/>
                 <outlet property="searchField" destination="wlf-SW-1Z1" id="8jM-0s-jpn"/>

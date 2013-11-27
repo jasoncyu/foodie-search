@@ -57,7 +57,7 @@
 {
 //    float latitude = location.coordinate.latitude;
 //    float longitude = location.coordinate.longitude;
-    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?near=%@&client_id=%@&client_secret=%@&v=%@", location, CLIENT_ID, CLIENT_SECRET, @"20131123"];
+    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?near=%@&query=%@&client_id=%@&client_secret=%@&v=%@", location, searchTerm, CLIENT_ID, CLIENT_SECRET, @"20131123"];
     NSString *escapedURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return escapedURL;
 }
@@ -82,7 +82,7 @@
             NSDictionary *searchResultsDict = [NSJSONSerialization JSONObjectWithData:data
                                                                               options:kNilOptions
                                                                                 error:&error];
-            NSLog(@"%@", searchResultsDict);
+//            NSLog(@"%@", searchResultsDict);
             NSArray *objVenues = searchResultsDict[@"response"][@"venues"];
             NSMutableArray *venues = [@[] mutableCopy];
             
@@ -103,6 +103,9 @@
 // 5 photo per venue
 - (void)getPhotosForVenue:(FourSquareVenue *)venue completionBlock:(FourSquarePhotoCompletionBlock) completionBlock
 {
+    if (venue == nil || venue.id == nil) {
+        ULog(@"No such venue");
+    }
     NSString *searchURL = [FourSquare photoSeachURLForVenue:venue];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
@@ -121,7 +124,7 @@
         //First 5 images
         int i = 0;
         for (NSMutableDictionary *objPhoto in objPhotos) {
-            NSString *photoURL = [NSString stringWithFormat:@"%@original%@",
+            NSString *photoURL = [NSString stringWithFormat:@"%@width100%@",
                                   objPhoto[@"prefix"],
                                   objPhoto[@"suffix"]];
             FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
@@ -130,6 +133,7 @@
             if (!photoMaybe) {
                 DLog(@"Bad photo url");
             }
+//            DLog(@"photo size: %@", NSStringFromCGSize(photoMaybe.size));
             fourSquarePhoto.photo = photoMaybe;
             fourSquarePhoto.venue = venue;
             

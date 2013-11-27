@@ -22,6 +22,7 @@
 -(void)setFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto
 {
     self.photo.image = fourSquarePhoto.photo;
+    self.photo.contentMode = UIViewContentModeScaleToFill;
 }
 
 /*

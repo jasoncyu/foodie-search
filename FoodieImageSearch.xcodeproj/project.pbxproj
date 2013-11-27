@@ -14,7 +14,7 @@
 		209336981841947D008EFEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336971841947D008EFEBD /* main.m */; };
 		2093369C1841947D008EFEBD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2093369B1841947D008EFEBD /* AppDelegate.m */; };
 		2093369F1841947D008EFEBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093369D1841947D008EFEBD /* Main.storyboard */; };
-		209336A21841947D008EFEBD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336A11841947D008EFEBD /* ViewController.m */; };
+		209336A21841947D008EFEBD /* PhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336A11841947D008EFEBD /* PhotoCollectionViewController.m */; };
 		209336A41841947D008EFEBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209336A31841947D008EFEBD /* Images.xcassets */; };
 		209336AB1841947D008EFEBD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209336AA1841947D008EFEBD /* XCTest.framework */; };
 		209336AC1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
@@ -24,7 +24,7 @@
 		209336C2184194A3008EFEBD /* FourSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C1184194A3008EFEBD /* FourSquare.m */; };
 		209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C41841AB36008EFEBD /* FourSquarePhoto.m */; };
 		209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 209336C81842987D008EFEBD /* FourSquareVenue.m */; };
-		209E39BC18446747001F18A5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39BB18446747001F18A5 /* ViewController.xib */; };
+		209E39BC18446747001F18A5 /* PhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39BB18446747001F18A5 /* PhotoCollectionViewController.xib */; };
 		209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E39C318446BCF001F18A5 /* PhotoCell.m */; };
 		209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39C618446C63001F18A5 /* PhotoCell.xib */; };
 /* End PBXBuildFile section */
@@ -51,8 +51,8 @@
 		2093369A1841947D008EFEBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2093369B1841947D008EFEBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2093369E1841947D008EFEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		209336A01841947D008EFEBD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		209336A11841947D008EFEBD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		209336A01841947D008EFEBD /* PhotoCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewController.h; sourceTree = "<group>"; };
+		209336A11841947D008EFEBD /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
 		209336A31841947D008EFEBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		209336A91841947D008EFEBD /* FoodieImageSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodieImageSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		209336AA1841947D008EFEBD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -65,7 +65,7 @@
 		209336C41841AB36008EFEBD /* FourSquarePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquarePhoto.m; sourceTree = "<group>"; };
 		209336C71842987D008EFEBD /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FourSquareVenue.h; path = FoodieImageSearch/FourSquareVenue.h; sourceTree = "<group>"; };
 		209336C81842987D008EFEBD /* FourSquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FourSquareVenue.m; path = FoodieImageSearch/FourSquareVenue.m; sourceTree = "<group>"; };
-		209E39BB18446747001F18A5 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		209E39BB18446747001F18A5 /* PhotoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewController.xib; sourceTree = "<group>"; };
 		209E39C218446BCF001F18A5 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCell.h; path = FoodieImageSearch/PhotoCell.h; sourceTree = "<group>"; };
 		209E39C318446BCF001F18A5 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCell.m; path = FoodieImageSearch/PhotoCell.m; sourceTree = "<group>"; };
 		209E39C618446C63001F18A5 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
@@ -133,9 +133,9 @@
 				2093369A1841947D008EFEBD /* AppDelegate.h */,
 				2093369B1841947D008EFEBD /* AppDelegate.m */,
 				2093369D1841947D008EFEBD /* Main.storyboard */,
-				209336A01841947D008EFEBD /* ViewController.h */,
-				209336A11841947D008EFEBD /* ViewController.m */,
-				209E39BB18446747001F18A5 /* ViewController.xib */,
+				209336A01841947D008EFEBD /* PhotoCollectionViewController.h */,
+				209336A11841947D008EFEBD /* PhotoCollectionViewController.m */,
+				209E39BB18446747001F18A5 /* PhotoCollectionViewController.xib */,
 				209336A31841947D008EFEBD /* Images.xcassets */,
 				209336921841947D008EFEBD /* Supporting Files */,
 			);
@@ -272,7 +272,7 @@
 			files = (
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
-				209E39BC18446747001F18A5 /* ViewController.xib in Resources */,
+				209E39BC18446747001F18A5 /* PhotoCollectionViewController.xib in Resources */,
 				2093369F1841947D008EFEBD /* Main.storyboard in Resources */,
 				209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */,
 			);
@@ -295,7 +295,7 @@
 			files = (
 				209336C2184194A3008EFEBD /* FourSquare.m in Sources */,
 				209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */,
-				209336A21841947D008EFEBD /* ViewController.m in Sources */,
+				209336A21841947D008EFEBD /* PhotoCollectionViewController.m in Sources */,
 				209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */,
 				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,
 				209336C91842987D008EFEBD /* FourSquareVenue.m in Sources */,

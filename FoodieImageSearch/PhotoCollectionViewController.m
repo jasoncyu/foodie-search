@@ -6,22 +6,25 @@
 //  Copyright (c) 2013 JasonMimee. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PhotoCollectionViewController.h"
 #import "FourSquare.h"
 #import "FourSquareVenue.h"
 #import "FourSquarePhoto.h"
 #import "PhotoCell.h"
+@import SystemConfiguration;
 
-@interface ViewController () <UITextFieldDelegate>
+@interface PhotoCollectionViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 
 @property NSMutableArray *images;
+
+@property BOOL isDataSourceAvailable;
 @end
 
-@implementation ViewController
+@implementation PhotoCollectionViewController
 
 - (void)viewDidLoad
 {
@@ -45,6 +48,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //TODO: photos don't display property, wrong fit
     PhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     FourSquarePhoto *fourSquarePhoto = self.fourSquarePhotos[indexPath.row];
     cell.fourSquarePhoto = fourSquarePhoto;
@@ -69,10 +73,8 @@
 
         __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
         [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
-            NSLog(@"%@", venues);
             if(venues && [venues count] > 0) {
                 venue = venues[0];
-                DLog(@"%@", venue.id);
             } else {
                 NSLog(@"Error searching venues: %@", error);
             }
@@ -86,8 +88,13 @@
                 
                 [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
                 [self.collectionView reloadData];
+                DLog();
             }];
+            
+            DLog();
         }];
+        
+        DLog();
     }
     
     return YES;
@@ -101,5 +108,24 @@
     [self.loadingView addSubview: progress];
     [progress startAnimating];
     [self.loadingView show];
+}
+
+#pragma mark - Network
+- (BOOL)isDataSourceAvailable
+{
+    static BOOL checkNetwork = YES;
+    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
+        checkNetwork = NO;
+        
+        Boolean success;
+        const char *host_name = "twitter.com"; // your data source host name
+        
+        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
+        SCNetworkReachabilityFlags flags;
+        success = SCNetworkReachabilityGetFlags(reachability, &flags);
+        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
+        CFRelease(reachability);
+    }
+    return _isDataSourceAvailable;
 }
 @end
