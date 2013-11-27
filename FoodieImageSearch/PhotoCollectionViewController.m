@@ -141,7 +141,7 @@
 
 - (void)dismiss
 {
-    DLog(@"dismiss");
+//    DLog(@"dismiss");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

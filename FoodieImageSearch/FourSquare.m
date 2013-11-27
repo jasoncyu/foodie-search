@@ -129,7 +129,6 @@
             NSString *photoURL = [NSString stringWithFormat:@"%@original%@",
                                   objPhoto[@"prefix"],
                                   objPhoto[@"suffix"]];
-            DLog(@"%@", photoURL);
             FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
             UIImage *photoMaybe = [[UIImage alloc]
              initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
