@@ -7,8 +7,8 @@
 //
 
 #import "FourSquare.h"
-#import "FourSquarePhoto.h"
-#import "FourSquareVenue.h"
+#import "FourSquareCategory.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define CLIENT_ID @"H2NAFJGZIB0DHTN1EI5XCBS3O1RJY2V1T42CLACK3TQGQBET"
 #define CLIENT_SECRET @"RMB4ZL04E05KQIJYX4ENRQBF1BLOUCW4PX22AVWCGZNZTD42"
@@ -23,10 +23,12 @@
 @property NSURLConnection *photosConnection;
 @property NSURLSession *session;
 
-
+@property SDWebImageManager *webImageManager;
 @end
 
-@implementation FourSquare
+@implementation FourSquare {
+    dispatch_queue_t backgroundQueue;
+}
 - (id) init
 {
     self.locationManager = [[CLLocationManager alloc] init];
@@ -38,6 +40,7 @@
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
     
+    self.webImageManager = [SDWebImageManager sharedManager];
     return self;
 }
 
@@ -88,10 +91,27 @@
             NSArray *objVenues = searchResultsDict[@"response"][@"venues"];
             NSMutableArray *venues = [@[] mutableCopy];
             
+            
+            //Grab venues
             for (NSMutableDictionary *objVenue in objVenues) {
-                FourSquareVenue *venue = [[FourSquareVenue alloc] init];
+                __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
                 venue.id = objVenue[@"id"];
                 venue.name = objVenue[@"name"];
+                
+                NSArray *objCategories = objVenue[@"categories"];
+                for (NSDictionary *objCategory in objCategories) {
+                    FourSquareCategory *category = [[FourSquareCategory alloc] init];
+                    category.name = objCategory[@"name"];
+                    
+                    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@bg_%d%@", objCategory[@"icon"][@"prefix"], 88, objCategory[@"icon"][@"suffix"]]];
+                    [self.webImageManager downloadWithURL:iconURL
+                                                  options:0
+                                                 progress:nil
+                                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                                                    category.icon = image;
+                                                    [venue.categories addObject:category];
+                                                }];
+                }
                 
                 [venues addObject:venue];
             }
@@ -121,7 +141,6 @@
         
         int count = searchResultsDict[@"response"][@"photos"][@"count"];
         NSArray *objPhotos = searchResultsDict[@"response"][@"photos"][@"items"];
-        NSMutableArray *fourSquarePhotos = [@[] mutableCopy];
         
         //First 5 images
         int i = 0;
@@ -129,24 +148,28 @@
             NSString *photoURL = [NSString stringWithFormat:@"%@original%@",
                                   objPhoto[@"prefix"],
                                   objPhoto[@"suffix"]];
-            FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
-            UIImage *photoMaybe = [[UIImage alloc]
-             initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
-            if (!photoMaybe) {
-                DLog(@"Bad photo url");
-            }
-//            DLog(@"photo size: %@", NSStringFromCGSize(photoMaybe.size));
-            fourSquarePhoto.photo = photoMaybe;
-            fourSquarePhoto.venue = venue;
-            
-            [fourSquarePhotos addObject:fourSquarePhoto];
+
+            [self.webImageManager downloadWithURL:[NSURL URLWithString:photoURL] options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {;
+//                NSLog(@"received size: %lu", (unsigned long)receivedSize);
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+//                DLog(@"%@", error);
+                if (image) {
+                    FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
+                    fourSquarePhoto.photo = image;
+                    fourSquarePhoto.venue = venue;
+                
+                    completionBlock(fourSquarePhoto, error);
+                } else {
+                    ULog(@"no image");
+                }
+            }];
+
             i++;
             if (i == 5) {
                 break;
             }
         }
         
-        completionBlock(fourSquarePhotos, error);
     }];
     [dataTask resume];
 }

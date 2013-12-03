@@ -10,4 +10,10 @@
 
 @implementation FourSquareVenue
 
+-(id)init
+{
+    self = [super init];
+    self.categories = [NSMutableArray array];
+    return self;
+}
 @end

@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "FourSquareVenue.h"
+#import "FourSquarePhoto.h"
+
 typedef void (^FourSquareVenueSearchCompletionBlock)(NSString *searchTerm, NSArray *venues, NSError *error);
-typedef void (^FourSquarePhotoCompletionBlock)(NSMutableArray *photos, NSError *error);
+typedef void (^FourSquarePhotoCompletionBlock)(FourSquarePhoto *photo, NSError *error);
 
 @interface FourSquare : NSObject
 - (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;

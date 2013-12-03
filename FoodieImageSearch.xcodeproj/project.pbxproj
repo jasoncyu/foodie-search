@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203EE212184D942100166F40 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20605B131846AD3F000AA87D /* SDWebImage.framework */; };
+		203EE215184D962B00166F40 /* FourSquareCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 203EE214184D962B00166F40 /* FourSquareCategory.m */; };
 		204FC43518459C250006A75D /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 204FC43318459C250006A75D /* PhotoDetailViewController.m */; };
 		204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 204FC43418459C250006A75D /* PhotoDetailViewController.xib */; };
+		20605B181846B08F000AA87D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20605B171846B08F000AA87D /* MapKit.framework */; };
+		20605B1A1846B094000AA87D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20605B191846B094000AA87D /* ImageIO.framework */; };
 		2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
 		2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368D1841947D008EFEBD /* CoreGraphics.framework */; };
 		209336901841947D008EFEBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368F1841947D008EFEBD /* UIKit.framework */; };
@@ -29,6 +33,8 @@
 		209E39BC18446747001F18A5 /* PhotoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39BB18446747001F18A5 /* PhotoCollectionViewController.xib */; };
 		209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E39C318446BCF001F18A5 /* PhotoCell.m */; };
 		209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39C618446C63001F18A5 /* PhotoCell.xib */; };
+		20CFBD1C184D58D80062F715 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */; };
+		20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		203EE213184D962B00166F40 /* FourSquareCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareCategory.h; sourceTree = "<group>"; };
+		203EE214184D962B00166F40 /* FourSquareCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareCategory.m; sourceTree = "<group>"; };
 		204FC43218459C250006A75D /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
 		204FC43318459C250006A75D /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
 		204FC43418459C250006A75D /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
+		20605B131846AD3F000AA87D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		20605B171846B08F000AA87D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		20605B191846B094000AA87D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		209336881841947D008EFEBD /* FoodieImageSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieImageSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093368B1841947D008EFEBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2093368D1841947D008EFEBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +85,9 @@
 		209E39C218446BCF001F18A5 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCell.h; path = FoodieImageSearch/PhotoCell.h; sourceTree = "<group>"; };
 		209E39C318446BCF001F18A5 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCell.m; path = FoodieImageSearch/PhotoCell.m; sourceTree = "<group>"; };
 		209E39C618446C63001F18A5 /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailsViewController.h; sourceTree = "<group>"; };
+		20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailsViewController.m; sourceTree = "<group>"; };
+		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203EE212184D942100166F40 /* SDWebImage.framework in Frameworks */,
+				20605B1A1846B094000AA87D /* ImageIO.framework in Frameworks */,
+				20605B181846B08F000AA87D /* MapKit.framework in Frameworks */,
 				2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */,
 				209336901841947D008EFEBD /* UIKit.framework in Frameworks */,
 				2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */,
@@ -124,6 +141,9 @@
 		2093368A1841947D008EFEBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20605B191846B094000AA87D /* ImageIO.framework */,
+				20605B171846B08F000AA87D /* MapKit.framework */,
+				20605B131846AD3F000AA87D /* SDWebImage.framework */,
 				2093368B1841947D008EFEBD /* Foundation.framework */,
 				2093368D1841947D008EFEBD /* CoreGraphics.framework */,
 				2093368F1841947D008EFEBD /* UIKit.framework */,
@@ -179,6 +199,8 @@
 		209336C61841B865008EFEBD /* FourSquare */ = {
 			isa = PBXGroup;
 			children = (
+				203EE213184D962B00166F40 /* FourSquareCategory.h */,
+				203EE214184D962B00166F40 /* FourSquareCategory.m */,
 				209336C0184194A3008EFEBD /* FourSquare.h */,
 				209336C1184194A3008EFEBD /* FourSquare.m */,
 				209336C31841AB36008EFEBD /* FourSquarePhoto.h */,
@@ -198,6 +220,9 @@
 				204FC43218459C250006A75D /* PhotoDetailViewController.h */,
 				204FC43318459C250006A75D /* PhotoDetailViewController.m */,
 				204FC43418459C250006A75D /* PhotoDetailViewController.xib */,
+				20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */,
+				20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */,
+				20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -278,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */,
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
 				204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */,
@@ -302,9 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CFBD1C184D58D80062F715 /* RestaurantDetailsViewController.m in Sources */,
 				209336C2184194A3008EFEBD /* FourSquare.m in Sources */,
 				209336C51841AB36008EFEBD /* FourSquarePhoto.m in Sources */,
 				204FC43518459C250006A75D /* PhotoDetailViewController.m in Sources */,
+				203EE215184D962B00166F40 /* FourSquareCategory.m in Sources */,
 				209336A21841947D008EFEBD /* PhotoCollectionViewController.m in Sources */,
 				209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */,
 				2093369C1841947D008EFEBD /* AppDelegate.m in Sources */,
@@ -436,9 +464,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/yelp_project/FoodieImageSearch,
+					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/foodie_search/FoodieImageSearch,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
 				INFOPLIST_FILE = "FoodieImageSearch/FoodieImageSearch-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -449,9 +483,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/yelp_project/FoodieImageSearch,
+					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/foodie_search/FoodieImageSearch,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
 				INFOPLIST_FILE = "FoodieImageSearch/FoodieImageSearch-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

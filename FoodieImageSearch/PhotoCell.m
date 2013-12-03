@@ -21,6 +21,8 @@
 
 -(void)setFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto
 {
+    [self.photo.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [self.photo.layer setBorderWidth: 2.0];
     self.photo.image = fourSquarePhoto.photo;
 //    self.photo.contentMode = UIViewContentModeScaleToFill;
 }

@@ -7,10 +7,14 @@
 //
 
 #import "PhotoDetailViewController.h"
+#import "RestaurantDetailsViewController.h"
 
 @interface PhotoDetailViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *restaurantDetailsButton;
+- (IBAction)viewRestaurantDetails:(id)sender;
+- (IBAction)goBackToSearchView:(id)sender;
 
 @property FourSquarePhoto *fourSquarePhoto;
 @end
@@ -23,6 +27,7 @@
     if (self) {
         self.fourSquarePhoto = fourSquarePhoto;
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
     }
     
 
@@ -33,9 +38,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    [self.backButton addTarget:self.presentingViewController action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     self.imageView.image = self.fourSquarePhoto.photo;
-    [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,9 +47,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)back
+
+- (IBAction)viewRestaurantDetails:(id)sender
 {
-    [self.presentingViewController performSelector:@selector(dismiss)];
+    RestaurantDetailsViewController *vc = [[RestaurantDetailsViewController alloc] initWithNibName:@"RestaurantDetailsViewController" bundle:nil];
+    vc.venue = self.fourSquarePhoto.venue;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)goBackToSearchView:(id)sender {
+    [self.presentingViewController performSelector:@selector(dismiss)];
+}
 @end

@@ -67,44 +67,44 @@
 {
     FourSquarePhoto *photo = self.fourSquarePhotos[indexPath.item];
     PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:photo];
-//    [self.navigationController pushViewController:vc animated:YES];
-    [self presentViewController:vc animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.searchField) {
+        self.fourSquarePhotos = [@[] mutableCopy];
         NSString *searchTerm = textField.text;
         [self.searchField resignFirstResponder];
         [self showLoadingView];
         
         FourSquare *fourSquare = [[FourSquare alloc] init];
 
-        __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
+//        __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
         [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
             if(venues && [venues count] > 0) {
-                venue = venues[0];
+//                outer_venues = venues;
             } else {
                 NSLog(@"Error searching venues: %@", error);
             }
-
-            [fourSquare getPhotosForVenue:venue completionBlock:^(NSMutableArray *photos, NSError *error) {
-                if (photos && [photos count] > 0) {
-                    [self.fourSquarePhotos addObjectsFromArray:photos];
-                } else {
-                    DLog(@"No photos found");
-                }
-                
-                [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-                [self.collectionView reloadData];
-                DLog();
-            }];
             
-            DLog();
+            for (FourSquareVenue *venue in venues) {
+                [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
+                    if (photo)
+                    {
+                        [self.fourSquarePhotos addObject:photo];
+                    }
+                    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+                    [self.collectionView reloadData];
+                }];
+            }
+
+//            DLog();
         }];
         
-        DLog();
+//        DLog();
     }
     
     return YES;

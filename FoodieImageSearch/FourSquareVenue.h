@@ -11,4 +11,5 @@
 @interface FourSquareVenue : NSObject
 @property NSString *id;
 @property NSString *name;
+@property NSMutableArray *categories;
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FourSquarePhoto.h"
+#import "FourSquareVenue.h"
 
 @interface PhotoDetailViewController : UIViewController
 - (id)initWithFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto;
