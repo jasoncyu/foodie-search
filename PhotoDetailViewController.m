@@ -53,7 +53,8 @@
     [nameLabel setBackgroundColor:[UIColor whiteColor]];
     nameLabel.alpha = 0.7;
     nameLabel.textAlignment = NSTextAlignmentCenter;
-    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Light" size: 14.0f]];//@"Trebuchet MS" size: 14.0f]];
+    [nameLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+    //Fonts cant be too skinny it seems //@"Helvetica Light" size: 14.0f]];//@"Trebuchet MS" size: 14.0f]];
     [nameLabel setText:self.fourSquarePhoto.venue.name];
     [self.imageView addSubview:nameLabel];
     
