@@ -98,8 +98,8 @@
 		928E5314184F2D7000AB5490 /* PhotoSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSwipeViewController.h; sourceTree = "<group>"; };
 		928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSwipeViewController.m; sourceTree = "<group>"; };
 		928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSwipeViewController.xib; sourceTree = "<group>"; };
-		928E5319184F2FF100AB5490 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
-		928E531A184F2FF100AB5490 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
+		928E5319184F2FF100AB5490 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableView.h; path = FoodieImageSearch/DraggableView.h; sourceTree = "<group>"; };
+		928E531A184F2FF100AB5490 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableView.m; path = FoodieImageSearch/DraggableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +176,10 @@
 				209336A01841947D008EFEBD /* PhotoCollectionViewController.h */,
 				209336A11841947D008EFEBD /* PhotoCollectionViewController.m */,
 				209E39BB18446747001F18A5 /* PhotoCollectionViewController.xib */,
+				928E5314184F2D7000AB5490 /* PhotoSwipeViewController.h */,
+				928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */,
 				209336A31841947D008EFEBD /* Images.xcassets */,
 				209336921841947D008EFEBD /* Supporting Files */,
-				928E5314184F2D7000AB5490 /* PhotoSwipeViewController.h */,
-				928E5319184F2FF100AB5490 /* DraggableView.h */,
-				928E531A184F2FF100AB5490 /* DraggableView.m */,
-				928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */,
 				928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */,
 			);
 			path = FoodieImageSearch;
@@ -234,6 +232,8 @@
 		209E39C518446BD9001F18A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				928E5319184F2FF100AB5490 /* DraggableView.h */,
+				928E531A184F2FF100AB5490 /* DraggableView.m */,
 				209E39C218446BCF001F18A5 /* PhotoCell.h */,
 				209E39C318446BCF001F18A5 /* PhotoCell.m */,
 				209E39C618446C63001F18A5 /* PhotoCell.xib */,

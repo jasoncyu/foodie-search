@@ -56,9 +56,13 @@
 {
     //self.tempArray = [[NSMutableArray alloc] init];
 
-    for(NSInteger i = index; i!=self.fourSquarePhotos.count; ++i)
+    for(NSInteger j = index; j!=self.fourSquarePhotos.count; ++j)
     {
-        DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:[self.fourSquarePhotos objectAtIndex:i]]];
+        if ([self.fourSquarePhotos objectAtIndex:j ]){
+            
+            FourSquarePhoto *photoToAdd = [self.fourSquarePhotos objectAtIndex:j];
+            UIImage *readyImage = photoToAdd.photo;
+            DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
         
         //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
         
@@ -69,8 +73,8 @@
         [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
         [imageLayer setShadowOffset: CGSizeMake(10, 10)];
         //[tempView.imageView clipsToBounds: YES];
-        [self.tempArray addObject:tempView];
-        i = i +1;
+            [self.tempArray addObject:tempView];}
+        j = j +1;
         
     }
     //reverse the tempArray
@@ -169,7 +173,7 @@
                     NSLog([NSString stringWithFormat:@"%d", self.fourSquarePhotos.count]);
                     
                      NSLog([NSString stringWithFormat:@"%d", (self.fourSquarePhotos.count%8)]);
-                    if ((self.fourSquarePhotos.count)%8 == 0)
+                    if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
                     {
                             [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
                     }

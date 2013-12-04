@@ -14,6 +14,5 @@
 
 @property NSMutableArray *tempArray;
 
-@property NSInteger i;
 
 @end
