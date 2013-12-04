@@ -21,7 +21,8 @@
 #import "FourSquarePhoto.h"
 #import "PhotoCell.h"
 #import "PhotoDetailViewController.h"
-
+//Hacky way to load somewhat evenly -- use a random number generator
+#include <stdlib.h>
 @import SystemConfiguration;
 @interface PhotoSwipeViewController ()
 
@@ -62,14 +63,42 @@
             
             FourSquarePhoto *photoToAdd = [self.fourSquarePhotos objectAtIndex:j];
             UIImage *readyImage = photoToAdd.photo;
-            DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+            
+            CGRect frame;
+            NSInteger r = arc4random() % 4;
+            //UpperLeft
+            if (r==1)
+            {
+                frame = CGRectMake(160-100 - 5*(j-index), 610+5*(j-index), 200, 200);
+                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+            }
+            //UpperRight
+            if (r==2)
+            {
+                frame = CGRectMake(260-200 - 5*(j-index), 610+5*(j-index), 200, 200);
+                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+            }
+            
+            if (r==3)
+            {
+                frame = CGRectMake(260-200 - 5*(j-index), 320-5*(j-index), 200, 200);
+                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+            }
+            
+            else
+            {
+                frame = CGRectMake(160-100 - 5*(j-index), 320-5*(j-index), 200, 200);
+                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+            }
         
+            DraggableView *tempView = [[DraggableView alloc] initWithFrame:frame image:readyImage];
+            
         //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
         
         CALayer *imageLayer = tempView.imageView.layer;
         [imageLayer setBorderColor: [[UIColor blackColor] CGColor]];
-        [imageLayer setBorderWidth: 10.0];
-        [imageLayer setCornerRadius:10.0];
+        [imageLayer setBorderWidth: 1.0];
+        [imageLayer setCornerRadius:2.0];
         [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
         [imageLayer setShadowOffset: CGSizeMake(10, 10)];
         //[tempView.imageView clipsToBounds: YES];
