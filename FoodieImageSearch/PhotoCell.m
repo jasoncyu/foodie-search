@@ -19,12 +19,45 @@
     return self;
 }
 
+
+
 -(void)setFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto
 {
-    [self.photo.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.photo.layer setBorderWidth: 2.0];
+    //Write all the magic numbers on earth!
+    //... ...
+    
+    /*\TODO do not write magic numbers! */
+    /* \brief crop the image into 300 by 300 from the center*/
+    UIImage *image = fourSquarePhoto.photo;
+    double x = (image.size.width - 400) / 2.0;
+    double y = (image.size.height - 400) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, 400, 400);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    
+    //background view
+    /*\TODO: filter them */
+    self.backgroundView = [[UIImageView alloc] initWithImage:cropped] ;
+    self.backgroundView.alpha = 0.80;
+    [self.backgroundView.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [self.backgroundView.layer setBorderWidth: 4.0];
+    [self.backgroundView.layer setCornerRadius:12.0];
+    //[self.photo.layer setShadowColor: [[UIColor grayColor] CGColor]];
+    //[self.photo.layer setShadowOffset: CGSizeMake(4, -4)];
+    self.backgroundView.clipsToBounds = YES;
+    
+    
+    //old code about self.photo
+    /*
+    self.photo.image = cropped;
     self.photo.image = fourSquarePhoto.photo;
-//    self.photo.contentMode = UIViewContentModeScaleToFill;
+    self.photo.alpha = 0.55;
+    self.photo.contentMode = UIViewContentModeScaleToFill;
+     */
 }
 
 /*

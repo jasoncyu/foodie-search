@@ -70,6 +70,7 @@
 - (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
 {
     //TODO: don't hardcode this
+    
     NSString *location = @"Claremont, CA";
     NSString *searchURL = [FourSquare fourSquareSearchURLForSearchTerm:term near:location];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
