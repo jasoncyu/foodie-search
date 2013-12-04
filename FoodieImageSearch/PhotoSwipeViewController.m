@@ -23,6 +23,8 @@
 #import "PhotoDetailViewController.h"
 //Hacky way to load somewhat evenly -- use a random number generator
 #include <stdlib.h>
+//I want gradient background
+#import "BackgroundLayer.h"
 @import SystemConfiguration;
 @interface PhotoSwipeViewController ()
 
@@ -49,6 +51,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
+        bgLayer.frame = self.view.bounds;
+        [self.view.layer insertSublayer:bgLayer atIndex:0];
+
     }
     return self;
 }

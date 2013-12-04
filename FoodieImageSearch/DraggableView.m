@@ -7,7 +7,7 @@
 //
 
 #import "DraggableView.h"
-
+#import "RestaurantDetailsViewController.h"
 @implementation DraggableView
 
 /*- (id)initWithFrame:(CGRect)frame
@@ -27,6 +27,13 @@
         // Initialization code
         
         self.imageView = [[UIImageView alloc] initWithImage:aImage];
+        CALayer *layerToStyle = self.imageView.layer;
+        layerToStyle.borderWidth = 2.0;
+        layerToStyle.cornerRadius = 6.0;
+        layerToStyle.shadowColor= [[UIColor grayColor] CGColor];
+        [layerToStyle setShadowOffset:CGSizeMake(40, 40)];
+        self.imageView.clipsToBounds = YES;
+
         self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         [self addSubview:self.imageView];
         
@@ -41,7 +48,7 @@
         
         self.yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 150)];
         self.yesLabel.text = @"OK!";
-        self.yesLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:76];
+        self.yesLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:26];
         self.yesLabel.textAlignment = NSTextAlignmentCenter;
         self.yesLabel.backgroundColor = [UIColor clearColor];
         self.yesLabel.textColor = [UIColor orangeColor];
@@ -125,9 +132,14 @@
             self.yesLabel.font = [UIFont fontWithName:@"ArialRoundedMT" size:22];
             self.yesLabel.textColor = [UIColor whiteColor];
             
+            RestaurantDetailsViewController *vc = [[RestaurantDetailsViewController alloc] initWithNibName:@"RestaurantDetailsViewController" bundle:nil];
+            vc.venue = self.fourSquarePhoto.venue;
+            
+
             //TODO: Fetch restaurant info
-            self.yesLabel.text = @"restaurant info";
+            self.yesLabel.text = self.fourSquarePhoto.venue.name;
             self.yesLabel.alpha = 1.0f;
+            //[self presentViewController:vc animated:YES];
         }];
     }
 }
