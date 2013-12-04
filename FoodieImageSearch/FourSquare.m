@@ -97,13 +97,14 @@
                 __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
                 venue.id = objVenue[@"id"];
                 venue.name = objVenue[@"name"];
+                venue.openString = objVenue[@"hours"][@"status"];
                 
                 NSArray *objCategories = objVenue[@"categories"];
                 for (NSDictionary *objCategory in objCategories) {
                     FourSquareCategory *category = [[FourSquareCategory alloc] init];
                     category.name = objCategory[@"name"];
                     
-                    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@bg_%d%@", objCategory[@"icon"][@"prefix"], 88, objCategory[@"icon"][@"suffix"]]];
+                    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@bg_%d%@", objCategory[@"icon"][@"prefix"], 32, objCategory[@"icon"][@"suffix"]]];
                     [self.webImageManager downloadWithURL:iconURL
                                                   options:0
                                                  progress:nil

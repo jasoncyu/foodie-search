@@ -35,6 +35,7 @@
 		209E39C718446C63001F18A5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 209E39C618446C63001F18A5 /* PhotoCell.xib */; };
 		20CFBD1C184D58D80062F715 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */; };
 		20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */; };
+		20EE8D0B184F11DD008F79B4 /* foursquare-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailsViewController.h; sourceTree = "<group>"; };
 		20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailsViewController.m; sourceTree = "<group>"; };
 		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
+		20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-icon.png"; path = "FoodieImageSearch/foursquare-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				209E39C518446BD9001F18A5 /* View */,
+				20EE8D09184F11AE008F79B4 /* Assets */,
 				209336C61841B865008EFEBD /* FourSquare */,
 				209336911841947D008EFEBD /* FoodieImageSearch */,
 				209336B01841947D008EFEBD /* FoodieImageSearchTests */,
@@ -227,6 +230,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		20EE8D09184F11AE008F79B4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */,
+				20EE8D0B184F11DD008F79B4 /* foursquare-icon.png in Resources */,
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
 				204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */,
