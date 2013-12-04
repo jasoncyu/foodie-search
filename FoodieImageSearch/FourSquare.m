@@ -8,7 +8,7 @@
 
 #import "FourSquare.h"
 #import "FourSquareCategory.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 
 #define CLIENT_ID @"H2NAFJGZIB0DHTN1EI5XCBS3O1RJY2V1T42CLACK3TQGQBET"
 #define CLIENT_SECRET @"RMB4ZL04E05KQIJYX4ENRQBF1BLOUCW4PX22AVWCGZNZTD42"
