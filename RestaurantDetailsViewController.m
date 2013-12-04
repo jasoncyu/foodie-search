@@ -8,12 +8,14 @@
 #import "RestaurantDetailsViewController.h"
 #import "FourSquareCategory.h"
 #import "FourSquare.h"
+#import "RestaurantLocation.h"
+
 @import CoreLocation;
 @import MapKit;
 
 #define METERS_PER_MILE 1609.344
 
-@interface RestaurantDetailsViewController ()
+@interface RestaurantDetailsViewController () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property MKMapView *mapView;
 @end
@@ -40,9 +42,13 @@
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     //map view
     FourSquare *fs = [[FourSquare alloc] init];
+
+    
     [fs getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(venue.location, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
         [self.mapView setRegion:viewRegion];
+        RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location];
+        [self.mapView addAnnotation:location];
         [self.view addSubview:self.mapView];
     }];
 
@@ -104,5 +110,27 @@
         NSString *url = [NSString stringWithFormat:@"http://foursquare.com/venue/%@", self.venue.id];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 	}
+}
+
+#pragma mark - MKMapViewDelegate methods
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString *identifier = @"RestaurantLocation";
+    if ([annotation isKindOfClass:[RestaurantLocation class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView.enabled = YES;
+            annotationView.canShowCallout = YES;
+            FourSquareCategory *firstCategory = self.venue.categories[0];
+            annotationView.image = firstCategory.icon;//here we use a nice image instead of the default pins
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        return annotationView;
+    }
+    
+    return nil;
 }
 @end
