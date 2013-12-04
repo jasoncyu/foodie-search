@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PhotoCollectionViewController.h"
+#import "PhotoSwipeViewController.h"
 
 @implementation AppDelegate
 
@@ -17,38 +18,39 @@
     
     //create the tab bar controller object
     self.tabBarController = [[UITabBarController alloc] init];
-    
     //create the first view controller
     UIViewController *cellModeVC = [[PhotoCollectionViewController alloc] initWithNibName:@"PhotoCollectionViewController" bundle:nil];
-//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
+    //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
     
     //    older config:
     //self.window.rootViewController = cellModeVC;
-
-    
-    
     
     [cellModeVC.view setBackgroundColor:[UIColor whiteColor]];
     [cellModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the red view's representation on the tab bar
-    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Span" image:nil tag:1];
+    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scroll" image:nil tag:1];
+    
     
     //create the second view controller
     /*\TODO actually it should be its own controller*/
-    UIViewController *swipeModeVC = [[PhotoCollectionViewController alloc] init];
+    UIViewController * swipeModeVC =[[PhotoSwipeViewController alloc] initWithNibName:@"PhotoSwipeViewController" bundle:nil];
+    //OR THIS:
+    //UIViewController *swipeModeVC = [[PhotoCollectionViewController alloc] init];
+    
+    
+    
     [swipeModeVC.view setBackgroundColor:[UIColor grayColor]];
     [swipeModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the second view's representation on the tab bar
-    swipeModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Decision" image:nil tag:2];
+    swipeModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Swipe" image:nil tag:2];
     
     //add the viewcontrollers to the tab bar
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:cellModeVC, swipeModeVC, nil] animated:YES];
-    
+    //This styling thing breaks for some reason
+    //self.tabBarController.tabBar.barStyle = UIBarStyleBlackTranslucent;
     //add the tabbarcontroller as the root view for the App
     [self.window setRootViewController:self.tabBarController];
     
-    
-    //
     [self.window makeKeyAndVisible];
     return YES;
 }

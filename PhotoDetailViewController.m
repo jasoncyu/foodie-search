@@ -44,6 +44,9 @@
     [self.imageView.layer setCornerRadius:15.0];
     self.imageView.clipsToBounds = YES;
     
+    //navigation title
+    [self.navigationItem setTitle:@"Explore More"];
+    
     //Add the restaurant name
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 9*(self.fourSquarePhoto.venue.name.length), 20)];
     //styling... just a label

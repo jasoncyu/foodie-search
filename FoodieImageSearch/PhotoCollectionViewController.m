@@ -50,7 +50,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: photos don't display property, wrong fit
+    //TODO: photos don't display property
+    // What property?? Also, I changed fit in PhotoCell. -Mimee Xu on Dec 3/4, 2013
+    
     PhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     FourSquarePhoto *fourSquarePhoto = self.fourSquarePhotos[indexPath.row];
     cell.fourSquarePhoto = fourSquarePhoto;
