@@ -39,6 +39,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.imageView.image = self.fourSquarePhoto.photo;
+    //Styling (\TODO: refactor the styel code; it is quite redundant)
+    [self.imageView.layer setBorderWidth:2];
+    [self.imageView.layer setCornerRadius:15.0];
+    self.imageView.clipsToBounds = YES;
+    
+    //Add the restaurant name
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 10*(self.fourSquarePhoto.venue.name.length), 20)];
+    //styling... just a label
+    [nameLabel.layer setBorderWidth:2];
+    [nameLabel setTextColor:[UIColor blackColor]];
+    [nameLabel.layer setCornerRadius:5.0];
+    [nameLabel setBackgroundColor:[UIColor whiteColor]];
+    nameLabel.alpha = 0.7;
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    [nameLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+    [nameLabel setText:self.fourSquarePhoto.venue.name];
+    [self.imageView addSubview:nameLabel];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

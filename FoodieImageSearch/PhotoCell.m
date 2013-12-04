@@ -29,10 +29,10 @@
     /*\TODO do not write magic numbers! */
     /* \brief crop the image into 300 by 300 from the center*/
     UIImage *image = fourSquarePhoto.photo;
-    double x = (image.size.width - 400) / 2.0;
-    double y = (image.size.height - 400) / 2.0;
+    double x = (image.size.width - 420) / 2.0;
+    double y = (image.size.height - 420) / 2.0;
     
-    CGRect cropRect = CGRectMake(x, y, 400, 400);
+    CGRect cropRect = CGRectMake(x, y, 420, 420);
     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
     
     UIImage *cropped = [UIImage imageWithCGImage:imageRef];
@@ -44,8 +44,9 @@
     self.backgroundView = [[UIImageView alloc] initWithImage:cropped] ;
     self.backgroundView.alpha = 0.80;
     [self.backgroundView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.backgroundView.layer setBorderWidth: 4.0];
+    [self.backgroundView.layer setBorderWidth: 2.0];
     [self.backgroundView.layer setCornerRadius:12.0];
+    [self.backgroundView.layer setShadowOffset: CGSizeMake(4,-4)];
     //[self.photo.layer setShadowColor: [[UIColor grayColor] CGColor]];
     //[self.photo.layer setShadowOffset: CGSizeMake(4, -4)];
     self.backgroundView.clipsToBounds = YES;

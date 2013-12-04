@@ -12,4 +12,6 @@
 
 @interface PhotoDetailViewController : UIViewController
 - (id)initWithFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto;
+
+
 @end
