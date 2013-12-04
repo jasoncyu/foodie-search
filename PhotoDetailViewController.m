@@ -45,15 +45,15 @@
     self.imageView.clipsToBounds = YES;
     
     //Add the restaurant name
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 10*(self.fourSquarePhoto.venue.name.length), 20)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 9*(self.fourSquarePhoto.venue.name.length), 23)];
     //styling... just a label
-    [nameLabel.layer setBorderWidth:2];
+    [nameLabel.layer setBorderWidth:1];
     [nameLabel setTextColor:[UIColor blackColor]];
     [nameLabel.layer setCornerRadius:5.0];
     [nameLabel setBackgroundColor:[UIColor whiteColor]];
     nameLabel.alpha = 0.7;
     nameLabel.textAlignment = NSTextAlignmentCenter;
-    [nameLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Light" size: 14.0f]];//@"Trebuchet MS" size: 14.0f]];
     [nameLabel setText:self.fourSquarePhoto.venue.name];
     [self.imageView addSubview:nameLabel];
     
