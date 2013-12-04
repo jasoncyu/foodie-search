@@ -11,10 +11,11 @@
 #import "FourSquarePhoto.h"
 
 typedef void (^FourSquareVenueSearchCompletionBlock)(NSString *searchTerm, NSArray *venues, NSError *error);
+typedef void (^FourSquareVenueDetailsCompletionBlock)(FourSquareVenue *venue, NSError *error);
 typedef void (^FourSquarePhotoCompletionBlock)(FourSquarePhoto *photo, NSError *error);
 
 @interface FourSquare : NSObject
 - (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
 - (void)getPhotosForVenue:(FourSquareVenue *)venue completionBlock:(FourSquarePhotoCompletionBlock) completionBlock;
-- (void)testSession;
+- (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock;
 @end

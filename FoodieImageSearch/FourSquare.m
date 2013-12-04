@@ -44,14 +44,6 @@
     return self;
 }
 
--(void)testSession
-{
-    NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:@"www.google.com"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        ULog(@"called");
-    }];
-                                      
-    [dataTask resume];
-}
 + (NSString *)photoSeachURLForVenue:(FourSquareVenue *)venue
 {
     NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@/photos?client_id=%@&client_secret=%@&v=%@", venue.id, CLIENT_ID, CLIENT_SECRET, @"20131123"];
@@ -65,6 +57,12 @@
     NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?near=%@&query=%@&client_id=%@&client_secret=%@&v=%@", location, searchTerm, CLIENT_ID, CLIENT_SECRET, @"20131123"];
     NSString *escapedURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return escapedURL;
+}
+
++ (NSString *)venueURLForId:(NSString *)id
+{
+    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@", id];
+    return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
@@ -131,9 +129,7 @@
         ULog(@"No such venue");
     }
     NSString *searchURL = [FourSquare photoSeachURLForVenue:venue];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    NSError * error = nil;
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:searchURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 //        ULog(@"called");
         NSDictionary *searchResultsDict = [NSJSONSerialization
@@ -141,7 +137,6 @@
                                            options:kNilOptions
                                            error:&error];
         
-        int count = searchResultsDict[@"response"][@"photos"][@"count"];
         NSArray *objPhotos = searchResultsDict[@"response"][@"photos"][@"items"];
         
         //First 5 images
@@ -174,6 +169,16 @@
         
     }];
     [dataTask resume];
+}
+
+//Needed because this returns more detailed information about a venue than
+//searching for many venues
+- (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock
+{
+    NSURL *url = [NSURL URLWithString:[FourSquare venueURLForId:id]];
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        <#code#>
+    }]
 }
 
 # pragma mark - CLLocationManagerDelegate methods
