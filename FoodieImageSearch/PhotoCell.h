@@ -12,4 +12,6 @@
 @interface PhotoCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property(weak, nonatomic) FourSquarePhoto *fourSquarePhoto;
+
+
 @end

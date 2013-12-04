@@ -36,6 +36,7 @@
 		20CFBD1C184D58D80062F715 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */; };
 		20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */; };
 		20EE8D0B184F11DD008F79B4 /* foursquare-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */; };
+		928E52C1184EDA1A00AB5490 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928E52C0184EDA1A00AB5490 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailsViewController.m; sourceTree = "<group>"; };
 		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
 		20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-icon.png"; path = "FoodieImageSearch/foursquare-icon.png"; sourceTree = "<group>"; };
+		928E52C0184EDA1A00AB5490 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				20605B1A1846B094000AA87D /* ImageIO.framework in Frameworks */,
 				20605B181846B08F000AA87D /* MapKit.framework in Frameworks */,
 				2093368E1841947D008EFEBD /* CoreGraphics.framework in Frameworks */,
+				928E52C1184EDA1A00AB5490 /* SDWebImage.framework in Frameworks */,
 				209336901841947D008EFEBD /* UIKit.framework in Frameworks */,
 				2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */,
 			);
@@ -122,6 +125,7 @@
 		2093367F1841947C008EFEBD = {
 			isa = PBXGroup;
 			children = (
+				928E52C0184EDA1A00AB5490 /* SDWebImage.framework */,
 				209E39C518446BD9001F18A5 /* View */,
 				20EE8D09184F11AE008F79B4 /* Assets */,
 				209336C61841B865008EFEBD /* FourSquare */,
@@ -480,6 +484,7 @@
 					"$(inherited)",
 					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/yelp_project/FoodieImageSearch,
 					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/foodie_search/FoodieImageSearch,
+					"/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
@@ -499,7 +504,9 @@
 					"$(inherited)",
 					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/yelp_project/FoodieImageSearch,
 					/Users/yujason2/Dropbox/School/Semester_7/CS_181H_Mobile_Software_Development/foodie_search/FoodieImageSearch,
+					"/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search",
 				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/SDWebImage\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodieImageSearch/FoodieImageSearch-Prefix.pch";
 				INFOPLIST_FILE = "FoodieImageSearch/FoodieImageSearch-Info.plist";
