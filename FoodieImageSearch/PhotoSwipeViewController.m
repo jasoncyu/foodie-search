@@ -59,7 +59,8 @@
 
     for(NSInteger j = index; j!=self.fourSquarePhotos.count; ++j)
     {
-        if ([self.fourSquarePhotos objectAtIndex:j ]){
+        if ([self.fourSquarePhotos objectAtIndex:j ])
+        {
             
             FourSquarePhoto *photoToAdd = [self.fourSquarePhotos objectAtIndex:j];
             UIImage *readyImage = photoToAdd.photo;
@@ -69,25 +70,25 @@
             //UpperLeft
             if (r==1)
             {
-                frame = CGRectMake(160-100 - 5*(j-index), 610+5*(j-index), 200, 200);
+                frame = CGRectMake(160-100 - 5*(j-index), 410+5*(j-index), 200, 200);
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
             //UpperRight
             if (r==2)
             {
-                frame = CGRectMake(260-200 - 5*(j-index), 610+5*(j-index), 200, 200);
+                frame = CGRectMake(260-200 - 5*(j-index), 410+5*(j-index), 200, 200);
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
             
             if (r==3)
             {
-                frame = CGRectMake(260-200 - 5*(j-index), 320-5*(j-index), 200, 200);
+                frame = CGRectMake(260-200 - 5*(j-index), 120-5*(j-index), 200, 200);
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
             
             else
             {
-                frame = CGRectMake(160-100 - 5*(j-index), 320-5*(j-index), 200, 200);
+                frame = CGRectMake(160-100 - 5*(j-index), 120-5*(j-index), 200, 200);
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
         
@@ -96,23 +97,28 @@
         //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
         
         CALayer *imageLayer = tempView.imageView.layer;
-        [imageLayer setBorderColor: [[UIColor blackColor] CGColor]];
-        [imageLayer setBorderWidth: 1.0];
-        [imageLayer setCornerRadius:2.0];
+        [imageLayer setBorderColor: [[UIColor whiteColor] CGColor]];
+        [imageLayer setBorderWidth: 2.0];
+        //[imageLayer setCornerRadius:2.0];
         [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
         [imageLayer setShadowOffset: CGSizeMake(10, 10)];
-        //[tempView.imageView clipsToBounds: YES];
-            [self.tempArray addObject:tempView];}
+        [self.tempArray addObject:tempView];
+        }
         j = j +1;
         
     }
     //reverse the tempArray
     self.tempArray =[NSMutableArray arrayWithArray: [[self.tempArray reverseObjectEnumerator] allObjects]];
     //add to stackView "backwards"
+    //but below the last layer added
     for (DraggableView* imageView in self.tempArray)
     {
-        [self.stackView addSubview: imageView];
+        if (!self.tempLastView){
+            [self.stackView addSubview: imageView];
+        }
+        else [self.stackView insertSubview:imageView belowSubview:self.tempLastView];
     }
+    self.tempLastView = self.tempArray.firstObject;
 }
 
 
@@ -131,15 +137,13 @@
     
     self.photos = [@[] mutableCopy];
 
-    /*\FIXME:Make this a truly mutable array
-     *       by loading from data
-     * \TODO: do not hard code this
-     */
+
     //self.photos = [NSMutableArray arrayWithObjects: @"fay.jpg", @"coolbeet.jpg", @"suyu.jpg", nil];
     
     /*  Perhaps we could put in four at a time?
      * \TODO: init the photos either in cells
      *       or in scattered positions.
+     * \TODO: get rid of *photos because it is redundant.
      */
     
     /* \TODO: factor this out for general use*/
