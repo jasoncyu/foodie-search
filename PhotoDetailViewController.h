@@ -10,8 +10,14 @@
 #import "FourSquarePhoto.h"
 #import "FourSquareVenue.h"
 
+@protocol PhotoDetailViewControllerDelegate <NSObject>
+
+- (void)dismissMe;
+
+@end
+
 @interface PhotoDetailViewController : UIViewController
+@property id <PhotoDetailViewControllerDelegate> delegate;
+
 - (id)initWithFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto;
-
-
 @end

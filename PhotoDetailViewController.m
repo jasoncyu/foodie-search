@@ -80,6 +80,6 @@
 }
 
 - (IBAction)goBackToSearchView:(id)sender {
-    [self.presentingViewController performSelector:@selector(dismiss)];
+    [self.delegate dismissMe];
 }
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
 
 @interface FourSquareVenue : NSObject
 @property NSString *id;
@@ -15,4 +16,5 @@
 @property NSMutableArray *categories;
 //A message describing if the restaurant is open/closed
 @property NSString *openString;
+@property CLLocationCoordinate2D location;
 @end

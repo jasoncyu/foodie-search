@@ -16,7 +16,7 @@
 @import CoreLocation;
 
 @interface FourSquare () <CLLocationManagerDelegate, NSURLConnectionDataDelegate>
-@property CLLocationManager *locationManager;
+//@property CLLocationManager *locationManager;
 @property CLLocation *location;
 
 @property NSURLConnection *venuesConnection;
@@ -31,11 +31,11 @@
 }
 - (id) init
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    [self.locationManager startUpdatingLocation];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
@@ -61,7 +61,7 @@
 
 + (NSString *)venueURLForId:(NSString *)id
 {
-    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@", id];
+    NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?client_id=%@&client_secret=%@&v=%@", id, CLIENT_ID, CLIENT_SECRET, @"20131123"];
     return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
@@ -175,16 +175,33 @@
 //searching for many venues
 - (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock
 {
+
+    
     NSURL *url = [NSURL URLWithString:[FourSquare venueURLForId:id]];
-    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        <#code#>
-    }]
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSDictionary *searchResultsDict = [NSJSONSerialization
+                                           JSONObjectWithData:data
+                                           options:kNilOptions
+                                           error:&error];
+        NSDictionary *objVenue = searchResultsDict[@"response"][@"venue"];
+        NSDictionary *objLocation = objVenue[@"location"];
+        
+        FourSquareVenue *venue = [[FourSquareVenue alloc] init];
+        CLLocationCoordinate2D location;
+
+        location.latitude = [objLocation[@"lat"] doubleValue];
+        location.longitude = [objLocation[@"lng"] doubleValue];
+        venue.location = location;
+        
+        completionBlock(venue, error);
+    }];
+    [dataTask resume];
 }
 
 # pragma mark - CLLocationManagerDelegate methods
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    self.location = [locations lastObject];
-}
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
+//    self.location = [locations lastObject];
+//}
 
 @end

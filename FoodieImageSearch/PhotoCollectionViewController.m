@@ -15,7 +15,7 @@
 
 @import SystemConfiguration;
 
-@interface PhotoCollectionViewController () <UITextFieldDelegate>
+@interface PhotoCollectionViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
@@ -50,9 +50,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: photos don't display property
-    // What property?? Also, I changed fit in PhotoCell. -Mimee Xu on Dec 3/4, 2013
-    
     PhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     FourSquarePhoto *fourSquarePhoto = self.fourSquarePhotos[indexPath.row];
     cell.fourSquarePhoto = fourSquarePhoto;
@@ -69,6 +66,7 @@
 {
     FourSquarePhoto *photo = self.fourSquarePhotos[indexPath.item];
     PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:photo];
+    vc.delegate = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -141,9 +139,9 @@
     return _isDataSourceAvailable;
 }
 
-- (void)dismiss
+#pragma mark - PhotoDetailViewControllerDelegate methods
+-(void)dismissMe
 {
-//    DLog(@"dismiss");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
