@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DraggableView.h"
 
 @interface PhotoSwipeViewController : UIViewController
 
 @property NSMutableArray *photos;
 
 @property NSMutableArray *tempArray;
-
+@property DraggableView *tempLastView;
 
 @end

@@ -7,18 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FourSquarePhoto.h"
 @interface DraggableView : UIView {
     CGPoint offset;
 }
 
+
+
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *yesLabel;
 @property (nonatomic, strong) UILabel *noLabel;
+
+@property(weak, nonatomic) FourSquarePhoto *fourSquarePhoto;
 
 @property (nonatomic, strong) UIGestureRecognizer *singleTab;
 
 - (id)initWithFrame:(CGRect)frame image:(UIImage*)aImage;
 
 - (void)imageTaped:(UIGestureRecognizer *)gestureRecognizer;
+
 @end

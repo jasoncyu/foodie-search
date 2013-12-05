@@ -58,6 +58,7 @@
 		928E5317184F2D7000AB5490 /* PhotoSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */; };
 		928E5318184F2D7000AB5490 /* PhotoSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */; };
 		928E531B184F2FF100AB5490 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 928E531A184F2FF100AB5490 /* DraggableView.m */; };
+		928E531F184FE18000AB5490 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 928E531E184FE18000AB5490 /* BackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,8 @@
 		928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSwipeViewController.xib; sourceTree = "<group>"; };
 		928E5319184F2FF100AB5490 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableView.h; path = FoodieImageSearch/DraggableView.h; sourceTree = "<group>"; };
 		928E531A184F2FF100AB5490 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableView.m; path = FoodieImageSearch/DraggableView.m; sourceTree = "<group>"; };
+		928E531D184FE18000AB5490 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
+		928E531E184FE18000AB5490 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +311,8 @@
 				928E5319184F2FF100AB5490 /* DraggableView.h */,
 				928E531A184F2FF100AB5490 /* DraggableView.m */,
 				209E39C218446BCF001F18A5 /* PhotoCell.h */,
+				928E531D184FE18000AB5490 /* BackgroundLayer.h */,
+				928E531E184FE18000AB5490 /* BackgroundLayer.m */,
 				209E39C318446BCF001F18A5 /* PhotoCell.m */,
 				209E39C618446C63001F18A5 /* PhotoCell.xib */,
 				204FC43218459C250006A75D /* PhotoDetailViewController.h */,
@@ -558,6 +563,7 @@
 				209336A21841947D008EFEBD /* PhotoCollectionViewController.m in Sources */,
 				20C739D7184F209300182CFF /* UIImage+GIF.m in Sources */,
 				20C739D6184F209300182CFF /* UIButton+WebCache.m in Sources */,
+				928E531F184FE18000AB5490 /* BackgroundLayer.m in Sources */,
 				209E39C418446BCF001F18A5 /* PhotoCell.m in Sources */,
 				20C739DA184F209300182CFF /* UIImageView+WebCache.m in Sources */,
 				20C739D5184F209300182CFF /* SDWebImagePrefetcher.m in Sources */,
