@@ -43,7 +43,6 @@
     [swipeModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the second view's representation on the tab bar
     swipeModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Swipe" image:nil tag:2];
-    
     //add the viewcontrollers to the tab bar
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:cellModeVC, swipeModeVC, nil] animated:YES];
     //This styling thing breaks for some reason
