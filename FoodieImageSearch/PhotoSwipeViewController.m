@@ -21,12 +21,13 @@
 #import "FourSquarePhoto.h"
 #import "PhotoCell.h"
 #import "PhotoDetailViewController.h"
+
 //Hacky way to load somewhat evenly -- use a random number generator
 #include <stdlib.h>
 //I want gradient background
 #import "BackgroundLayer.h"
 @import SystemConfiguration;
-@interface PhotoSwipeViewController ()
+@interface PhotoSwipeViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIView *stackView;
@@ -263,6 +264,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//Protocol requirement
+-(void)dismissMe
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
