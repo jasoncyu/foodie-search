@@ -134,12 +134,11 @@
             
             RestaurantDetailsViewController *vc = [[RestaurantDetailsViewController alloc] initWithNibName:@"RestaurantDetailsViewController" bundle:nil];
             vc.venue = self.fourSquarePhoto.venue;
-            
-
             //TODO: Fetch restaurant info
             self.yesLabel.text = self.fourSquarePhoto.venue.name;
             self.yesLabel.alpha = 1.0f;
             //[self presentViewController:vc animated:YES];
+            //[self bringSubviewToFront:vc.view];
         }];
     }
 }

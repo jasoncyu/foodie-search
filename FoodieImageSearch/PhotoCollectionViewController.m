@@ -13,6 +13,8 @@
 #import "PhotoCell.h"
 #import "PhotoDetailViewController.h"
 
+#import "BackgroundLayer.h"
+
 @import SystemConfiguration;
 
 @interface PhotoCollectionViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
@@ -31,6 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self)
+    {
+        CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
+        bgLayer.frame = self.view.bounds;
+        [self.view.layer insertSublayer:bgLayer atIndex:0];
+    }
 	// Do any additional setup after loading the view, typically from a nib.
     self.fourSquarePhotos = [@[] mutableCopy];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil]forCellWithReuseIdentifier:@"PhotoCell"];
@@ -106,7 +114,7 @@
         
 //        DLog();
     }
-    
+    textField.backgroundColor = [UIColor clearColor];
     return YES;
 }
 

@@ -43,8 +43,8 @@
     /*\TODO: filter them */
     self.backgroundView = [[UIImageView alloc] initWithImage:cropped] ;
     self.backgroundView.alpha = 0.80;
-    [self.backgroundView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.backgroundView.layer setBorderWidth: 2.0];
+    [self.backgroundView.layer setBorderColor: [[UIColor grayColor] CGColor]];
+    [self.backgroundView.layer setBorderWidth: 1.0];
     [self.backgroundView.layer setCornerRadius:12.0];
     [self.backgroundView.layer setShadowOffset: CGSizeMake(4,-4)];
     //[self.photo.layer setShadowColor: [[UIColor grayColor] CGColor]];
