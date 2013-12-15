@@ -36,20 +36,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     //Nav bar
     [self.navigationItem setTitle:self.venue.name];
     
+    //Map videw
+//    [self.]
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    //map view
+    [self.view addSubview:self.mapView];
+    
     FourSquare *fs = [[FourSquare alloc] init];
-
     
     [fs getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(venue.location, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
         [self.mapView setRegion:viewRegion];
+        
         RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location];
         [self.mapView addAnnotation:location];
-        [self.view addSubview:self.mapView];
     }];
 
     
@@ -84,7 +87,6 @@
     [fourSquare getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
         ;
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +95,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-# pragma mark - Open in Yelp
+# pragma mark - Open in FourSquare
 - (BOOL)isFourSquareInstalled
 {
     return [[UIApplication sharedApplication]
@@ -122,12 +124,12 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            FourSquareCategory *firstCategory = self.venue.categories[0];
-            annotationView.image = firstCategory.icon;//here we use a nice image instead of the default pins
+
         } else {
             annotationView.annotation = annotation;
         }
-        
+        FourSquareCategory *firstCategory = self.venue.categories[0];
+        annotationView.image = firstCategory.icon;//here we use a nice image instead of the default pins    g
         return annotationView;
     }
     
