@@ -45,20 +45,20 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
+    //seems faster to execute in a background thread, but need to fiddle with the map a bit for the marker to show
     FourSquare *fs = [[FourSquare alloc] init];
-    
-    [fs getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
-//        self.venue.location = venue.location;
-        
-        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(venue.location, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-        [self.mapView setRegion:viewRegion];
-        
-        RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location name:_venue.name];
-        
-        [self.mapView addAnnotation:location];
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^{
+        [fs getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
+            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(venue.location, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+            [self.mapView setRegion:viewRegion];
+            
+            RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location name:_venue.name];
+            [self.mapView addAnnotation:location];
+            [self.mapView setCenterCoordinate:venue.location];
+            DLog();
+        }];
+    });
 
-    
     //category icons
     float categoryRowX = 0;
     float categoryRowY = 300;
@@ -122,17 +122,17 @@
     static NSString *identifier = @"RestaurantLocation";
     if ([annotation isKindOfClass:[RestaurantLocation class]]) {
         
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
             annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         } else {
             annotationView.annotation = annotation;
         }
-        FourSquareCategory *firstCategory = self.venue.categories[0];
-        annotationView.image = firstCategory.icon;
+//        FourSquareCategory *firstCategory = self.venue.categories[0];
+//        annotationView.image = firstCategory.icon;
         return annotationView;
     }
     
