@@ -71,13 +71,10 @@
     
     NSString *location = @"Claremont, CA";
     NSString *searchURL = [FourSquare fourSquareSearchURLForSearchTerm:term near:location];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    NSError *error = nil;
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:searchURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 //        ULog(@"called");
-        if (error != nil)
+        if (error)
         {
             completionBlock(term, nil, error);
         }
@@ -149,7 +146,11 @@
             [self.webImageManager downloadWithURL:[NSURL URLWithString:photoURL] options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {;
 //                NSLog(@"received size: %lu", (unsigned long)receivedSize);
             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-//                DLog(@"%@", error);
+                if (error) {
+                    ULog(@"No photos found");
+                    return;
+                }
+                
                 if (image) {
                     FourSquarePhoto *fourSquarePhoto = [[FourSquarePhoto alloc] init];
                     fourSquarePhoto.photo = image;

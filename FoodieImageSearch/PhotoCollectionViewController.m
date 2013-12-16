@@ -17,7 +17,7 @@
 
 @import SystemConfiguration;
 
-@interface PhotoCollectionViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
+@interface PhotoCollectionViewController () <UISearchBarDelegate, PhotoDetailViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
@@ -79,7 +79,7 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     self.fourSquarePhotos = [@[] mutableCopy];
@@ -90,21 +90,26 @@
     FourSquare *fourSquare = [[FourSquare alloc] init];
     
     [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
-        if(venues && [venues count] > 0) {
-            //                outer_venues = venues;
-        } else {
-            NSLog(@"Error searching venues: %@", error);
+        if (error) {
+            [self presentErrorMessage:[error localizedDescription]];
+            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+            return;
         }
         
-        for (FourSquareVenue *venue in venues) {
-            [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
-                if (photo)
-                {
-                    [self.fourSquarePhotos addObject:photo];
-                }
-                [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-                [self.collectionView reloadData];
-            }];
+        if(venues && [venues count] > 0) {
+            for (FourSquareVenue *venue in venues) {
+                [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
+                    if (photo)
+                    {
+                        [self.fourSquarePhotos addObject:photo];
+                    }
+                    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+                    [self.collectionView reloadData];
+                }];
+            }
+        } else {
+            [self presentErrorMessage:@"No restaurants found!"];
+            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
         }
     }];
     searchBar.backgroundColor = [UIColor clearColor];
@@ -132,28 +137,19 @@
     [self.loadingView show];
 }
 
-#pragma mark - Network
-- (BOOL)isDataSourceAvailable
-{
-    static BOOL checkNetwork = YES;
-    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
-        checkNetwork = NO;
-        
-        Boolean success;
-        const char *host_name = "twitter.com"; // your data source host name
-        
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
-        SCNetworkReachabilityFlags flags;
-        success = SCNetworkReachabilityGetFlags(reachability, &flags);
-        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
-        CFRelease(reachability);
-    }
-    return _isDataSourceAvailable;
-}
-
 #pragma mark - PhotoDetailViewControllerDelegate methods
 -(void)dismissMe
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Error handling
+- (void) presentErrorMessage:(NSString *)message {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 @end
