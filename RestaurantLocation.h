@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 @import MapKit;
 @interface RestaurantLocation : NSObject <MKAnnotation>
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+                    name:(NSString *)name;
+- (MKMapItem*)mapItem;
 @end

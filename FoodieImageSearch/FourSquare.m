@@ -175,8 +175,6 @@
 //searching for many venues
 - (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock
 {
-
-    
     NSURL *url = [NSURL URLWithString:[FourSquare venueURLForId:id]];
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *searchResultsDict = [NSJSONSerialization

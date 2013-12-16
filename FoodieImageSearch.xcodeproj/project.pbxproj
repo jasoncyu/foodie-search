@@ -95,9 +95,9 @@
 /* Begin PBXFileReference section */
 		203EE213184D962B00166F40 /* FourSquareCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareCategory.h; sourceTree = "<group>"; };
 		203EE214184D962B00166F40 /* FourSquareCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareCategory.m; sourceTree = "<group>"; };
-		204FC43218459C250006A75D /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
-		204FC43318459C250006A75D /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
-		204FC43418459C250006A75D /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoDetailViewController.xib; sourceTree = "<group>"; };
+		204FC43218459C250006A75D /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoDetailViewController.h; path = ../PhotoDetailViewController.h; sourceTree = "<group>"; };
+		204FC43318459C250006A75D /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoDetailViewController.m; path = ../PhotoDetailViewController.m; sourceTree = "<group>"; };
+		204FC43418459C250006A75D /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoDetailViewController.xib; path = ../PhotoDetailViewController.xib; sourceTree = "<group>"; };
 		20605B171846B08F000AA87D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		20605B191846B094000AA87D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		209336881841947D008EFEBD /* FoodieImageSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieImageSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,9 +166,9 @@
 		20C739B7184F209200182CFF /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		20C739B8184F209200182CFF /* SDWebImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SDWebImage.podspec; sourceTree = "<group>"; };
 		20C739B9184F209200182CFF /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
-		20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailsViewController.h; sourceTree = "<group>"; };
-		20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailsViewController.m; sourceTree = "<group>"; };
-		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
+		20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RestaurantDetailsViewController.h; path = ../RestaurantDetailsViewController.h; sourceTree = "<group>"; };
+		20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RestaurantDetailsViewController.m; path = ../RestaurantDetailsViewController.m; sourceTree = "<group>"; };
+		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RestaurantDetailsViewController.xib; path = ../RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
 		20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-icon.png"; path = "FoodieImageSearch/foursquare-icon.png"; sourceTree = "<group>"; };
 		20F51C2F184F1FD2009FCC16 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		928E5314184F2D7000AB5490 /* PhotoSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSwipeViewController.h; sourceTree = "<group>"; };
@@ -206,9 +206,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		208B8951185E7A2D005A4FEA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				20C3E6F2184FD1B800E6382E /* RestaurantLocation.h */,
+				20C3E6F3184FD1B800E6382E /* RestaurantLocation.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		2093367F1841947C008EFEBD = {
 			isa = PBXGroup;
 			children = (
+				208B8951185E7A2D005A4FEA /* Map */,
 				20C7397D184F209200182CFF /* SDWebImage */,
 				209E39C518446BD9001F18A5 /* View */,
 				20EE8D09184F11AE008F79B4 /* Assets */,
@@ -246,6 +256,12 @@
 		209336911841947D008EFEBD /* FoodieImageSearch */ = {
 			isa = PBXGroup;
 			children = (
+				20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */,
+				204FC43218459C250006A75D /* PhotoDetailViewController.h */,
+				204FC43318459C250006A75D /* PhotoDetailViewController.m */,
+				204FC43418459C250006A75D /* PhotoDetailViewController.xib */,
+				20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */,
+				20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */,
 				2093369A1841947D008EFEBD /* AppDelegate.h */,
 				2093369B1841947D008EFEBD /* AppDelegate.m */,
 				2093369D1841947D008EFEBD /* Main.storyboard */,
@@ -311,18 +327,10 @@
 				928E5319184F2FF100AB5490 /* DraggableView.h */,
 				928E531A184F2FF100AB5490 /* DraggableView.m */,
 				209E39C218446BCF001F18A5 /* PhotoCell.h */,
-				928E531D184FE18000AB5490 /* BackgroundLayer.h */,
-				928E531E184FE18000AB5490 /* BackgroundLayer.m */,
 				209E39C318446BCF001F18A5 /* PhotoCell.m */,
 				209E39C618446C63001F18A5 /* PhotoCell.xib */,
-				204FC43218459C250006A75D /* PhotoDetailViewController.h */,
-				204FC43318459C250006A75D /* PhotoDetailViewController.m */,
-				204FC43418459C250006A75D /* PhotoDetailViewController.xib */,
-				20CFBD19184D58D80062F715 /* RestaurantDetailsViewController.h */,
-				20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */,
-				20C3E6F2184FD1B800E6382E /* RestaurantLocation.h */,
-				20C3E6F3184FD1B800E6382E /* RestaurantLocation.m */,
-				20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */,
+				928E531D184FE18000AB5490 /* BackgroundLayer.h */,
+				928E531E184FE18000AB5490 /* BackgroundLayer.m */,
 			);
 			name = View;
 			sourceTree = "<group>";

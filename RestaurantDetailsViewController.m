@@ -40,18 +40,21 @@
     //Nav bar
     [self.navigationItem setTitle:self.venue.name];
     
-    //Map videw
-//    [self.]
+    //Map view
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
     FourSquare *fs = [[FourSquare alloc] init];
     
     [fs getVenueForId:self.venue.id completionBlock:^(FourSquareVenue *venue, NSError *error) {
+//        self.venue.location = venue.location;
+        
         MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(venue.location, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
         [self.mapView setRegion:viewRegion];
         
-        RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location];
+        RestaurantLocation *location = [[RestaurantLocation alloc] initWithCoordinate:venue.location name:_venue.name];
+        
         [self.mapView addAnnotation:location];
     }];
 
@@ -124,15 +127,22 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         } else {
             annotationView.annotation = annotation;
         }
         FourSquareCategory *firstCategory = self.venue.categories[0];
-        annotationView.image = firstCategory.icon;//here we use a nice image instead of the default pins    g
+        annotationView.image = firstCategory.icon;
         return annotationView;
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    RestaurantLocation *location = view.annotation;
+    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving};
+    [location.mapItem openInMapsWithLaunchOptions:launchOptions];
 }
 @end
