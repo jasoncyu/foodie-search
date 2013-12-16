@@ -21,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
-@property (strong, nonatomic) IBOutlet UITextField *searchField;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property NSMutableArray *images;
 
@@ -80,42 +80,46 @@
 }
 
 #pragma mark - UITextFieldDelegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if (textField == self.searchField) {
-        self.fourSquarePhotos = [@[] mutableCopy];
-        NSString *searchTerm = textField.text;
-        [self.searchField resignFirstResponder];
-        [self showLoadingView];
+    self.fourSquarePhotos = [@[] mutableCopy];
+    NSString *searchTerm = searchBar.text;
+    [self.searchBar resignFirstResponder];
+    [self showLoadingView];
+    
+    FourSquare *fourSquare = [[FourSquare alloc] init];
+    
+    [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
+        if(venues && [venues count] > 0) {
+            //                outer_venues = venues;
+        } else {
+            NSLog(@"Error searching venues: %@", error);
+        }
         
-        FourSquare *fourSquare = [[FourSquare alloc] init];
+        for (FourSquareVenue *venue in venues) {
+            [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
+                if (photo)
+                {
+                    [self.fourSquarePhotos addObject:photo];
+                }
+                [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+                [self.collectionView reloadData];
+            }];
+        }
+    }];
+    searchBar.backgroundColor = [UIColor clearColor];
+}
 
-//        __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
-        [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
-            if(venues && [venues count] > 0) {
-//                outer_venues = venues;
-            } else {
-                NSLog(@"Error searching venues: %@", error);
-            }
-            
-            for (FourSquareVenue *venue in venues) {
-                [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
-                    if (photo)
-                    {
-                        [self.fourSquarePhotos addObject:photo];
-                    }
-                    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-                    [self.collectionView reloadData];
-                }];
-            }
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
 
-//            DLog();
-        }];
-        
-//        DLog();
-    }
-    textField.backgroundColor = [UIColor clearColor];
-    return YES;
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
 }
 
 - (void)showLoadingView

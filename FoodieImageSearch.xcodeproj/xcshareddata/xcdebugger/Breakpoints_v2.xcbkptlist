@@ -274,28 +274,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodieImageSearch/PhotoCollectionViewController.m"
-            timestampString = "407882321.89888"
+            timestampString = "408854812.348741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodieImageSearch/PhotoCollectionViewController.m"
-            timestampString = "407882321.89888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-isDataSourceAvailable"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-showLoadingView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
