@@ -10,6 +10,7 @@
 		203EE215184D962B00166F40 /* FourSquareCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 203EE214184D962B00166F40 /* FourSquareCategory.m */; };
 		204FC43518459C250006A75D /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 204FC43318459C250006A75D /* PhotoDetailViewController.m */; };
 		204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 204FC43418459C250006A75D /* PhotoDetailViewController.xib */; };
+		20590EAD18610F1100CFAE0F /* NSMutableArray+Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 20590EA718610C4000CFAE0F /* NSMutableArray+Shuffle.m */; };
 		20605B181846B08F000AA87D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20605B171846B08F000AA87D /* MapKit.framework */; };
 		20605B1A1846B094000AA87D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20605B191846B094000AA87D /* ImageIO.framework */; };
 		2093368C1841947D008EFEBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093368B1841947D008EFEBD /* Foundation.framework */; };
@@ -98,6 +99,8 @@
 		204FC43218459C250006A75D /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoDetailViewController.h; path = ../PhotoDetailViewController.h; sourceTree = "<group>"; };
 		204FC43318459C250006A75D /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoDetailViewController.m; path = ../PhotoDetailViewController.m; sourceTree = "<group>"; };
 		204FC43418459C250006A75D /* PhotoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoDetailViewController.xib; path = ../PhotoDetailViewController.xib; sourceTree = "<group>"; };
+		20590EA618610C4000CFAE0F /* NSMutableArray+Shuffle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffle.h"; sourceTree = "<group>"; };
+		20590EA718610C4000CFAE0F /* NSMutableArray+Shuffle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffle.m"; sourceTree = "<group>"; };
 		20605B171846B08F000AA87D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		20605B191846B094000AA87D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		209336881841947D008EFEBD /* FoodieImageSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieImageSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +209,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20590EAC18610D5200CFAE0F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				20590EA618610C4000CFAE0F /* NSMutableArray+Shuffle.h */,
+				20590EA718610C4000CFAE0F /* NSMutableArray+Shuffle.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		208B8951185E7A2D005A4FEA /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +230,7 @@
 		2093367F1841947C008EFEBD = {
 			isa = PBXGroup;
 			children = (
+				20590EAC18610D5200CFAE0F /* Categories */,
 				208B8951185E7A2D005A4FEA /* Map */,
 				20C7397D184F209200182CFF /* SDWebImage */,
 				209E39C518446BD9001F18A5 /* View */,
@@ -557,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20590EAD18610F1100CFAE0F /* NSMutableArray+Shuffle.m in Sources */,
 				20C739D8184F209300182CFF /* UIImage+MultiFormat.m in Sources */,
 				20C739D9184F209300182CFF /* UIImage+WebP.m in Sources */,
 				20C739D4184F209300182CFF /* SDWebImageManager.m in Sources */,

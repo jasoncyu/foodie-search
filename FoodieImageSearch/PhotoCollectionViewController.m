@@ -12,7 +12,7 @@
 #import "FourSquarePhoto.h"
 #import "PhotoCell.h"
 #import "PhotoDetailViewController.h"
-
+#import "NSMutableArray+Shuffle.h"
 #import "BackgroundLayer.h"
 
 @import SystemConfiguration;
@@ -97,7 +97,11 @@
         }
         
         if(venues && [venues count] > 0) {
+            __block int venueDoneCount = 0;
+            venues = [NSMutableArray fisherShuffle:venues];
             for (FourSquareVenue *venue in venues) {
+                venueDoneCount++;
+                DLog("%d", venueDoneCount);
                 [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
                     if (photo)
                     {
@@ -105,6 +109,9 @@
                     }
                     [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
                     [self.collectionView reloadData];
+                } allPhotosDownloaded:^{
+                    venueDoneCount--;
+                    DLog("%d", venueDoneCount);
                 }];
             }
         } else {

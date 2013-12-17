@@ -120,7 +120,7 @@
 }
 
 // 5 photo per venue
-- (void)getPhotosForVenue:(FourSquareVenue *)venue completionBlock:(FourSquarePhotoCompletionBlock) completionBlock
+- (void)getPhotosForVenue:(FourSquareVenue *)venue completionBlock:(FourSquarePhotoCompletionBlock)completionBlock allPhotosDownloaded:(PhotosDownloadedBlock)downloadedBlock
 {
     if (venue == nil || venue.id == nil) {
         ULog(@"No such venue");
@@ -168,10 +168,18 @@
             }
         }
         
+        downloadedBlock();
+        
     }];
     [dataTask resume];
 }
 
+- (void)getPhotosForVenue:(FourSquareVenue *)venue
+          completionBlock:(FourSquarePhotoCompletionBlock)completionBlock
+{
+    [self getPhotosForVenue:venue completionBlock:completionBlock allPhotosDownloaded:^{
+    }];
+}
 //Needed because this returns more detailed information about a venue than
 //searching for many venues
 - (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock
