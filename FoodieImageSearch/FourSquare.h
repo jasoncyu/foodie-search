@@ -17,10 +17,6 @@ typedef void (^PhotosDownloadedBlock)();
 
 @interface FourSquare : NSObject
 - (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
-- (void)getPhotosForVenue:(FourSquareVenue *)venue
-          completionBlock:(FourSquarePhotoCompletionBlock)completionBlock
-      allPhotosDownloaded:(PhotosDownloadedBlock)downloadedBlock;
-- (void)getPhotosForVenue:(FourSquareVenue *)venue
-          completionBlock:(FourSquarePhotoCompletionBlock)completionBlock;
 - (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock;
+- (void)getPhotosForTerm:(NSString *)term completion:(FourSquarePhotoCompletionBlock)completion;
 @end

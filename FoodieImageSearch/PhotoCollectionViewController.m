@@ -87,40 +87,16 @@
     [self.searchBar resignFirstResponder];
     [self showLoadingView];
     
-    FourSquare *fourSquare = [[FourSquare alloc] init];
-    
-    [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
-        if (error) {
-            [self presentErrorMessage:[error localizedDescription]];
-            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-            return;
-        }
-        
-        if(venues && [venues count] > 0) {
-            __block int venueDoneCount = 0;
-            venues = [NSMutableArray fisherShuffle:venues];
-            for (FourSquareVenue *venue in venues) {
-                venueDoneCount++;
-                DLog("%d", venueDoneCount);
-                [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
-                    if (photo)
-                    {
-                        [self.fourSquarePhotos addObject:photo];
-                    }
-                    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-                    [self.collectionView reloadData];
-                } allPhotosDownloaded:^{
-                    venueDoneCount--;
-                    DLog("%d", venueDoneCount);
-                }];
-            }
-        } else {
-            [self presentErrorMessage:@"No restaurants found!"];
-            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-        }
+    FourSquare *fs = [[FourSquare alloc] init];
+    [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
+        [self.fourSquarePhotos addObject:photo];
+        [self.collectionView reloadData];
+        [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
     }];
-    searchBar.backgroundColor = [UIColor clearColor];
+    
+    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 }
+
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];

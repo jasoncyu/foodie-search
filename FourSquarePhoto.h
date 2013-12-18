@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FourSquareVenue.h"
+@class FourSquareVenue;
 
 @interface FourSquarePhoto : NSObject
 @property UIImage *photo;
 @property FourSquareVenue *venue;
+@property NSURL *imageURL;
 @end

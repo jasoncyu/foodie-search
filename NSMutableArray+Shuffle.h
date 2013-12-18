@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSMutableArray (Shuffle)
-+(NSArray *)fisherShuffle:(NSArray *)array;
++(NSMutableArray *)fisherShuffle:(NSArray *)array;
 @end

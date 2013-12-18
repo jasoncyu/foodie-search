@@ -8,6 +8,7 @@
 
 #import "DraggableView.h"
 #import "RestaurantDetailsViewController.h"
+#import "FourSquareVenue.h"
 @implementation DraggableView
 
 /*- (id)initWithFrame:(CGRect)frame

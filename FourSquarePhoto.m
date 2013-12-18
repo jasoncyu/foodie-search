@@ -7,6 +7,7 @@
 //
 
 #import "FourSquarePhoto.h"
+#import "FourSquareVenue.h"
 
 @implementation FourSquarePhoto
 @end

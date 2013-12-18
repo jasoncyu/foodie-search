@@ -55,7 +55,7 @@
         CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
         bgLayer.frame = self.view.bounds;
         [self.view.layer insertSublayer:bgLayer atIndex:0];
-
+        
     }
     return self;
 }
@@ -63,7 +63,7 @@
 -(void)reloadStackFromIndex: (NSInteger) index;
 {
     //self.tempArray = [[NSMutableArray alloc] init];
-
+    
     for(NSInteger j = index; j!=self.fourSquarePhotos.count; ++j)
     {
         if ([self.fourSquarePhotos objectAtIndex:j ])
@@ -98,18 +98,18 @@
                 frame = CGRectMake(160-100 - 5*(j-index), 120-5*(j-index), 200, 200);
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
-        
+            
             DraggableView *tempView = [[DraggableView alloc] initWithFrame:frame image:readyImage];
             
-        //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
-        
-        CALayer *imageLayer = tempView.imageView.layer;
-        [imageLayer setBorderColor: [[UIColor whiteColor] CGColor]];
-        [imageLayer setBorderWidth: 2.0];
-        //[imageLayer setCornerRadius:2.0];
-        [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
-        [imageLayer setShadowOffset: CGSizeMake(10, 10)];
-        [self.tempArray addObject:tempView];
+            //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
+            
+            CALayer *imageLayer = tempView.imageView.layer;
+            [imageLayer setBorderColor: [[UIColor whiteColor] CGColor]];
+            [imageLayer setBorderWidth: 2.0];
+            //[imageLayer setCornerRadius:2.0];
+            [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
+            [imageLayer setShadowOffset: CGSizeMake(10, 10)];
+            [self.tempArray addObject:tempView];
         }
         j = j +1;
         
@@ -143,8 +143,8 @@
     
     
     self.photos = [@[] mutableCopy];
-
-
+    
+    
     //self.photos = [NSMutableArray arrayWithObjects: @"fay.jpg", @"coolbeet.jpg", @"suyu.jpg", nil];
     
     /*  Perhaps we could put in four at a time?
@@ -170,7 +170,7 @@
         //[tempView.imageView clipsToBounds: YES];
         [self.tempArray addObject:tempView];
         i = i +1;
-
+        
     }
     //reverse the tempArray
     self.tempArray =[NSMutableArray arrayWithArray: [[self.tempArray reverseObjectEnumerator] allObjects]];
@@ -191,39 +191,22 @@
         [self.searchField resignFirstResponder];
         [self showLoadingView];
         
-        FourSquare *fourSquare = [[FourSquare alloc] init];
-        
-        //        __block FourSquareVenue *venue = [[FourSquareVenue alloc] init];
-        [fourSquare getVenuesForTerm:searchTerm completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
-            if(venues && [venues count] > 0) {
-                //                outer_venues = venues;
-            } else {
-                NSLog(@"Error searching venues: %@", error);
+        FourSquare *fs = [[FourSquare alloc] init];
+        [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
+            if (photo)
+            {
+                [self.fourSquarePhotos addObject:photo];
             }
+            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+
+//            NSLog([NSString stringWithFormat:@"%d", self.fourSquarePhotos.count]);
             
-            for (FourSquareVenue *venue in venues) {
-                [fourSquare getPhotosForVenue:venue completionBlock:^(FourSquarePhoto *photo, NSError *error) {
-                    if (photo)
-                    {
-                        [self.fourSquarePhotos addObject:photo];
-                    }
-                    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-                    //I don't quite understand this... I don't have a collection view now...
-                    //[self viewWillAppear:YES];
-                    NSLog([NSString stringWithFormat:@"%d", self.fourSquarePhotos.count]);
-                    
-                     NSLog([NSString stringWithFormat:@"%d", (self.fourSquarePhotos.count%8)]);
-                    if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
-                    {
-                            [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
-                    }
-                }];
+//            NSLog([NSString stringWithFormat:@"%d", (self.fourSquarePhotos.count%8)]);
+            if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
+            {
+                [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
             }
-            
-            //            DLog();
         }];
-        
-        //        DLog();
     }
     
     return YES;

@@ -9,7 +9,7 @@
 #import "NSMutableArray+Shuffle.h"
 
 @implementation NSMutableArray (Shuffle)
-+(NSArray *)fisherShuffle:(NSArray *)array
++(NSMutableArray *)fisherShuffle:(NSArray *)array
 {
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:array];
     NSUInteger count = [mutableArray count];
@@ -20,7 +20,7 @@
         }
     }
     
-    NSArray *randomArray = [NSArray arrayWithArray:mutableArray];
+    NSMutableArray *randomArray = [NSMutableArray arrayWithArray:mutableArray];
     return randomArray;
 }
 @end
