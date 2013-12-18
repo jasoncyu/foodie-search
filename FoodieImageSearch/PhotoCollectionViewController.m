@@ -94,7 +94,14 @@
             return;
         }
         [self.fourSquarePhotos addObject:photo];
-        [self.collectionView reloadData];
+        if ([self.fourSquarePhotos count] % 9 == 0) {
+            NSMutableArray *indexPaths = [NSMutableArray array];
+            for (unsigned long i = [self.fourSquarePhotos count] - 9; i < [self.fourSquarePhotos count]; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+                [indexPaths addObject:indexPath];
+            }
+            [self.collectionView insertItemsAtIndexPaths:indexPaths];
+        }
         [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
     }];
     
