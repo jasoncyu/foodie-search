@@ -192,7 +192,7 @@
                                        NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The operation timed out.", nil),
                                        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Have you tried turning it off and on again?", nil)
                                        };
-            NSError *error = [NSError errorWithDomain:nil
+            NSError *error = [NSError errorWithDomain:@"Foodie"
                                                  code:-57 
                                              userInfo:userInfo];
             completion(nil, error);

@@ -89,6 +89,10 @@
     
     FourSquare *fs = [[FourSquare alloc] init];
     [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
+        if (error) {
+            [self presentErrorMessage:[error localizedDescription]];
+            return;
+        }
         [self.fourSquarePhotos addObject:photo];
         [self.collectionView reloadData];
         [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
