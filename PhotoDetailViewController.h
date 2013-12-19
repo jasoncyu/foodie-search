@@ -20,4 +20,5 @@
 @property id <PhotoDetailViewControllerDelegate> delegate;
 
 - (id)initWithFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto;
+
 @end

@@ -11,9 +11,12 @@
 
 @interface PhotoSwipeViewController : UIViewController
 
-@property NSMutableArray *photos;
+
 
 @property NSMutableArray *tempArray;
 @property DraggableView *tempLastView;
+
+//- (void) viewTaped:(UIGestureRecognizer *)gestureRecognizer;
+//@property UITapGestureRecognizer *singleTap;
 
 @end

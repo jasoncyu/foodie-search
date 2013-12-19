@@ -18,6 +18,7 @@
 @import SystemConfiguration;
 
 @interface PhotoCollectionViewController () <UISearchBarDelegate, PhotoDetailViewControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;

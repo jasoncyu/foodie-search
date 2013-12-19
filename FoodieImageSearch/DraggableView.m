@@ -7,8 +7,30 @@
 //
 
 #import "DraggableView.h"
-#import "RestaurantDetailsViewController.h"
+#import "PhotoDetailViewController.h"
 #import "FourSquareVenue.h"
+
+@implementation UIView (AppNameAdditions)
+
+- (UIViewController *)swipeViewController {
+    /// Finds the view's view controller.
+    
+    // Take the view controller class object here and avoid sending the same message iteratively unnecessarily.
+    Class vcc = [UIViewController class];
+    
+    // Traverse responder chain. Return first found view controller, which will be the view's view controller.
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass: vcc])
+            return (UIViewController *)responder;
+    
+    // If the view controller isn't found, return nil.
+    return nil;
+}
+
+@end
+
+
 @implementation DraggableView
 
 /*- (id)initWithFrame:(CGRect)frame
@@ -21,20 +43,20 @@
 }*/
 
 
-- (id)initWithFrame:(CGRect)frame image:(UIImage*)aImage
+- (id)initWithFrame:(CGRect)frame andFourSquarePhoto:(FourSquarePhoto *)photoToAdd
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.fourSquarePhoto = photoToAdd;
         
-        self.imageView = [[UIImageView alloc] initWithImage:aImage];
+        self.imageView = [[UIImageView alloc] initWithImage:photoToAdd.photo];
         CALayer *layerToStyle = self.imageView.layer;
         layerToStyle.borderWidth = 2.0;
         layerToStyle.cornerRadius = 6.0;
         layerToStyle.shadowColor= [[UIColor grayColor] CGColor];
         [layerToStyle setShadowOffset:CGSizeMake(40, 40)];
         self.imageView.clipsToBounds = YES;
-
         self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         [self addSubview:self.imageView];
         
@@ -46,6 +68,9 @@
         self.noLabel.textColor = [UIColor redColor];
         self.noLabel.alpha = 0.0f;
         [self addSubview:self.noLabel];
+    
+        //Checked Label is almost always unseen
+        self.checkedLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width-180, 0, 180, 150)];
         
         self.yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 150)];
         self.yesLabel.text = @"OK!";
@@ -89,7 +114,7 @@
     [UIView commitAnimations];
     
     //swipe right
-    if (self.center.x >= 160) {
+    if (self.center.x >= 160 && self.checkedLabel.alpha!=0.9f) {
         //rotation
         [self setTransform:CGAffineTransformMakeRotation(((self.center.x - 160.0f)/160.0f) * (M_PI/5))];
         
@@ -103,7 +128,7 @@
         
     }
     //swipe left
-    else {
+    if (self.center.x < 160 && self.checkedLabel.alpha!=0.9f) {
         //rotation
         [self setTransform:CGAffineTransformMakeRotation((self.center.x - 160.0f)/160.0f * (M_PI/5))];
         
@@ -126,22 +151,51 @@
 //When tapped, show info
 - (void)imageTaped:(UIGestureRecognizer *)gestureRecognizer {
     //image will only respond if it does not have a "X" label
-    if (self.noLabel.alpha < 0.1f) {
-        [UIView animateWithDuration:0.5 animations:^(void){
-            self.imageView.alpha = 0.4f;
-            //TODO: find a better font.
-            self.yesLabel.font = [UIFont fontWithName:@"ArialRoundedMT" size:22];
-            self.yesLabel.textColor = [UIColor whiteColor];
+    if (self.noLabel.alpha < 0.1f && self.checkedLabel.alpha!=0.9)
+    {
+        self.userInteractionEnabled = NO;
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^(void)
+        {
+            self.imageView.alpha = 0.4;
+            [self setTransform:CGAffineTransformMakeScale(0.2, 0.2)];
+            //[self setTransform:CGAffineTransformMakeTranslation(-self.center.x+10, -self.center.y+10)];
+            self.center = CGPointMake(20,20);
             
-            RestaurantDetailsViewController *vc = [[RestaurantDetailsViewController alloc] initWithNibName:@"RestaurantDetailsViewController" bundle:nil];
-            vc.venue = self.fourSquarePhoto.venue;
-            //TODO: Fetch restaurant info
-            self.yesLabel.text = self.fourSquarePhoto.venue.name;
-            self.yesLabel.alpha = 1.0f;
-            //[self presentViewController:vc animated:YES];
-            //[self bringSubviewToFront:vc.view];
+            self.checkedLabel.font = [UIFont fontWithName:@"Helvetica" size:36];
+            self.checkedLabel.textAlignment = NSTextAlignmentCenter;
+            self.checkedLabel.backgroundColor = [UIColor clearColor];
+            self.checkedLabel.textColor = [UIColor whiteColor];
+            self.checkedLabel.alpha = 1.0f;
+            [self addSubview:self.checkedLabel];
+        }
+                         completion:^(BOOL finished)
+        {
+            self.checkedLabel.text = self.fourSquarePhoto.venue.name;
+            PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:self.fourSquarePhoto];
+            //Some sketchy things happening here
+            vc.delegate = [self swipeViewController];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [[self swipeViewController] presentViewController:nav animated:YES completion:^{self.userInteractionEnabled = YES;}];
         }];
+        
     }
+    
+    //In the case that the user decides to click on an image already "saved"
+    //We display detail for it
+    if (self.checkedLabel.alpha == 0.9f)
+    {
+        self.userInteractionEnabled = NO;
+        PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:self.fourSquarePhoto];
+        //Some sketchy things happening here
+        vc.delegate = [self swipeViewController];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        [[self swipeViewController] presentViewController:nav animated:YES completion:^{self.userInteractionEnabled = YES;}];
+    }
+    
+    //TODO: Maybe in the else case, the fadded pic comes back (unfadded) and wobbles adorably... or something.
 }
 
 

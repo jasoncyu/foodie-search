@@ -27,12 +27,15 @@
 //I want gradient background
 #import "BackgroundLayer.h"
 @import SystemConfiguration;
+
 @interface PhotoSwipeViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIView *stackView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
+
+//IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 
 //@property NSMutableArray *images;
@@ -55,22 +58,18 @@
         CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
         bgLayer.frame = self.view.bounds;
         [self.view.layer insertSublayer:bgLayer atIndex:0];
-        
+
     }
     return self;
 }
 
 -(void)reloadStackFromIndex: (NSInteger) index;
 {
-    //self.tempArray = [[NSMutableArray alloc] init];
-    
     for(NSInteger j = index; j!=self.fourSquarePhotos.count; ++j)
     {
         if ([self.fourSquarePhotos objectAtIndex:j ])
         {
-            
             FourSquarePhoto *photoToAdd = [self.fourSquarePhotos objectAtIndex:j];
-            UIImage *readyImage = photoToAdd.photo;
             
             CGRect frame;
             NSInteger r = arc4random() % 4;
@@ -99,19 +98,22 @@
                 //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
             
-            DraggableView *tempView = [[DraggableView alloc] initWithFrame:frame image:readyImage];
+            DraggableView *tempView = [[DraggableView alloc] initWithFrame:frame andFourSquarePhoto:photoToAdd];
             
             //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
             
+            
+            //Stylin'
             CALayer *imageLayer = tempView.imageView.layer;
             [imageLayer setBorderColor: [[UIColor whiteColor] CGColor]];
             [imageLayer setBorderWidth: 2.0];
             //[imageLayer setCornerRadius:2.0];
             [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
             [imageLayer setShadowOffset: CGSizeMake(10, 10)];
+            
             [self.tempArray addObject:tempView];
         }
-        j = j +1;
+        ++j;
         
     }
     //reverse the tempArray
@@ -128,6 +130,31 @@
     self.tempLastView = self.tempArray.firstObject;
 }
 
+//removeFromParentViewController is a thing!!!
+
+
+/*
+- (void) viewTaped:(UIGestureRecognizer *)gestureRecognizer
+{
+    DraggableView * draggableView = [self.stackView.subviews lastObject];
+    //if that view is not visible; remove it.
+    while (draggableView.imageView.alpha == 0)
+    {
+        [[self.stackView.subviews lastObject] removeFromSuperview];
+        //reassign
+        draggableView = [self.stackView.subviews lastObject];
+    }
+    
+    PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:draggableView.fourSquarePhoto];
+    [vc setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    
+    
+    vc.delegate = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+*/
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -138,47 +165,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSInteger i = 0;
-    // Do any additional setup after loading the view from its nib.
-    
-    
-    self.photos = [@[] mutableCopy];
-    
-    
-    //self.photos = [NSMutableArray arrayWithObjects: @"fay.jpg", @"coolbeet.jpg", @"suyu.jpg", nil];
-    
-    /*  Perhaps we could put in four at a time?
-     * \TODO: init the photos either in cells
-     *       or in scattered positions.
-     * \TODO: get rid of *photos because it is redundant.
-     */
-    
-    /* \TODO: factor this out for general use*/
-    self.tempArray = [[NSMutableArray alloc] init];
-    
-    
-    for (NSString* currentString in self.photos)
-    {
-        DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
-        
-        CALayer *imageLayer = tempView.imageView.layer;
-        [imageLayer setBorderColor: [[UIColor blackColor] CGColor]];
-        [imageLayer setBorderWidth: 10.0];
-        [imageLayer setCornerRadius:10.0];
-        [imageLayer setShadowColor: [[UIColor blackColor] CGColor]];
-        [imageLayer setShadowOffset: CGSizeMake(10, 10)];
-        //[tempView.imageView clipsToBounds: YES];
-        [self.tempArray addObject:tempView];
-        i = i +1;
-        
-    }
-    //reverse the tempArray
-    self.tempArray =[NSMutableArray arrayWithArray: [[self.tempArray reverseObjectEnumerator] allObjects]];
-    //add to stackView "backwards"
-    for (DraggableView* imageView in self.tempArray)
-    {
-        [self.stackView addSubview: imageView];
-    }
+    //add gestureRecogniser
+    /*UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTaped:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.stackView addGestureRecognizer:singleTap];
+    [self.stackView setUserInteractionEnabled:YES];*/
 }
 
 
@@ -199,9 +191,6 @@
             }
             [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 
-//            NSLog([NSString stringWithFormat:@"%d", self.fourSquarePhotos.count]);
-            
-//            NSLog([NSString stringWithFormat:@"%d", (self.fourSquarePhotos.count%8)]);
             if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
             {
                 [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
