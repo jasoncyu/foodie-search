@@ -23,6 +23,7 @@
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITextField *locationSearchTextField;
 
 @property NSMutableArray *images;
 
@@ -83,8 +84,15 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    if (searchBar == self.searchBar) {
+        [self searchTerm];
+    }
+}
+
+- (void)searchTerm
+{
     self.fourSquarePhotos = [@[] mutableCopy];
-    NSString *searchTerm = searchBar.text;
+    NSString *searchTerm = self.searchBar.text;
     [self.searchBar resignFirstResponder];
     [self showLoadingView];
     
@@ -108,7 +116,6 @@
     
     [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 }
-
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];

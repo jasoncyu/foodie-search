@@ -144,31 +144,31 @@
 
 
 #pragma mark - UITextFieldDelegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == self.searchField) {
-        self.fourSquarePhotos = [@[] mutableCopy];
-        NSString *searchTerm = textField.text;
-        [self.searchField resignFirstResponder];
-        [self showLoadingView];
-        
-        FourSquare *fs = [[FourSquare alloc] init];
-        [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
-            if (photo)
-            {
-                [self.fourSquarePhotos addObject:photo];
-            }
-            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-
-            if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
-            {
-                [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
-            }
-        }];
-    }
-    
-    return YES;
-}
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    if (textField == self.searchField) {
+//        self.fourSquarePhotos = [@[] mutableCopy];
+//        NSString *searchTerm = textField.text;
+//        [self.searchField resignFirstResponder];
+//        [self showLoadingView];
+//        
+//        FourSquare *fs = [[FourSquare alloc] init];
+//        [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
+//            if (photo)
+//            {
+//                [self.fourSquarePhotos addObject:photo];
+//            }
+//            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+//
+//            if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
+//            {
+//                [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
+//            }
+//        }];
+//    }
+//    
+//    return YES;
+//}
 
 - (void)showLoadingView
 {
