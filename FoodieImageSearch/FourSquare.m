@@ -151,7 +151,6 @@
     NSMutableArray *photos = [NSMutableArray array];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:searchURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //        ULog(@"called");
         NSDictionary *searchResultsDict = [NSJSONSerialization
                                            JSONObjectWithData:data
                                            options:kNilOptions
@@ -160,7 +159,6 @@
         
         
         for (NSMutableDictionary *objPhoto in objPhotos) {
-            DLog();
             NSString *photoURL = [NSString stringWithFormat:@"%@original%@",
                                   objPhoto[@"prefix"],
                                   objPhoto[@"suffix"]];
