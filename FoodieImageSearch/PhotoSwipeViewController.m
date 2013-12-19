@@ -130,31 +130,6 @@
     self.tempLastView = self.tempArray.firstObject;
 }
 
-//removeFromParentViewController is a thing!!!
-
-
-/*
-- (void) viewTaped:(UIGestureRecognizer *)gestureRecognizer
-{
-    DraggableView * draggableView = [self.stackView.subviews lastObject];
-    //if that view is not visible; remove it.
-    while (draggableView.imageView.alpha == 0)
-    {
-        [[self.stackView.subviews lastObject] removeFromSuperview];
-        //reassign
-        draggableView = [self.stackView.subviews lastObject];
-    }
-    
-    PhotoDetailViewController *vc = [[PhotoDetailViewController alloc] initWithFourSquarePhoto:draggableView.fourSquarePhoto];
-    [vc setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    
-    
-    vc.delegate = self;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-*/
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -165,12 +140,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //add gestureRecogniser
-    /*UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTaped:)];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
-    [self.stackView addGestureRecognizer:singleTap];
-    [self.stackView setUserInteractionEnabled:YES];*/
 }
 
 

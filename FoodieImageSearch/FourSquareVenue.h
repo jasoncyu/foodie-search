@@ -11,15 +11,16 @@
 @import CoreLocation;
 
 @interface FourSquareVenue : NSObject
-@property NSString *id;
-@property NSString *name;
+@property NSString * id;
+@property NSString * name;
 //array of FourSquareCategories
-@property NSMutableArray *categories;
+@property NSMutableArray * categories;
+
 //FourSquarePhoto
-@property NSMutableArray *photos;
+@property NSMutableArray * photos;
 
 //A message describing if the restaurant is open/closed
-@property NSString *openString;
+@property NSString * openString;
 @property CLLocationCoordinate2D location;
 
 @property BOOL startedDownload;

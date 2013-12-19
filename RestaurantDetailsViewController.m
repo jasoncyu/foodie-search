@@ -12,7 +12,6 @@
 
 @import CoreLocation;
 @import MapKit;
-#import "BackgroundLayer.h"
 #define METERS_PER_MILE 1609.344
 
 @interface RestaurantDetailsViewController () <MKMapViewDelegate>
@@ -40,13 +39,9 @@
     //Nav bar
     [self.navigationItem setTitle:self.venue.name];
     
-    //Background
-    CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
     
     //Map view - leaves 0px for info display
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height))];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height)-100)];
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
@@ -82,7 +77,7 @@
     UILabel *openLabel = [[UILabel alloc] initWithFrame:CGRectMake(categoryRowX, openLabelY, 100, 30)];
     openLabel.text = self.venue.openString;
     [self.view addSubview:openLabel];
-    
+
     //view this restaurant in foursquare
     float y = openLabelY + 50;
     UIButton *openInFourSquareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y, 40, 40)];

@@ -23,10 +23,6 @@
 
 -(void)setFourSquarePhoto:(FourSquarePhoto *)fourSquarePhoto
 {
-    //Write all the magic numbers on earth!
-    //... ...
-    
-    /*\TODO do not write magic numbers! */
     /* \brief crop the image into 300 by 300 from the center*/
     UIImage *image = fourSquarePhoto.photo;
     double x = (image.size.width - 420) / 2.0;
@@ -38,27 +34,17 @@
     UIImage *cropped = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     
-    
     //background view
     /*\TODO: filter them */
     self.backgroundView = [[UIImageView alloc] initWithImage:cropped] ;
-    self.backgroundView.alpha = 0.80;
+    self.backgroundView.alpha = 0.90;
     [self.backgroundView.layer setBorderColor: [[UIColor grayColor] CGColor]];
-    [self.backgroundView.layer setBorderWidth: 1.0];
+    [self.backgroundView.layer setBorderWidth: 0.0];
     [self.backgroundView.layer setCornerRadius:12.0];
     [self.backgroundView.layer setShadowOffset: CGSizeMake(4,-4)];
-    //[self.photo.layer setShadowColor: [[UIColor grayColor] CGColor]];
-    //[self.photo.layer setShadowOffset: CGSizeMake(4, -4)];
+
     self.backgroundView.clipsToBounds = YES;
-    
-    
-    //old code about self.photo
-    /*
-    self.photo.image = cropped;
-    self.photo.image = fourSquarePhoto.photo;
-    self.photo.alpha = 0.55;
-    self.photo.contentMode = UIViewContentModeScaleToFill;
-     */
+
 }
 
 /*

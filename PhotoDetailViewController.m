@@ -3,7 +3,7 @@
 //  FoodieImageSearch
 //
 //  Created by Jason Yu on 11/26/13.
-//  Copyright (c) 2013 JasonMimee. All rights reserved.
+//  Copyright (c) 2013 Jason Mimee. All rights reserved.
 //
 
 #import "PhotoDetailViewController.h"
@@ -41,14 +41,13 @@
 {
     [super viewDidLoad];
     
-    CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
+    CAGradientLayer *bgLayer = [BackgroundLayer blueGradient];//greyGradient];
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
     
     // Do any additional setup after loading the view from its nib.
     self.imageView.image = self.fourSquarePhoto.photo;
-    //Styling (\TODO: refactor the styel code; it is quite redundant)
-    [self.imageView.layer setBorderWidth:2];
+    [self.imageView.layer setBorderWidth:0];
     [self.imageView.layer setCornerRadius:15.0];
     self.imageView.clipsToBounds = YES;
     
@@ -65,7 +64,7 @@
     nameLabel.alpha = 0.7;
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [nameLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-    //Fonts cant be too skinny it seems //@"Helvetica Light" size: 14.0f]];//@"Trebuchet MS" size: 14.0f]];
+
     [nameLabel setText:self.fourSquarePhoto.venue.name];
     [self.imageView addSubview:nameLabel];
     

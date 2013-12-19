@@ -118,8 +118,7 @@
         //rotation
         [self setTransform:CGAffineTransformMakeRotation(((self.center.x - 160.0f)/160.0f) * (M_PI/5))];
         
-        //labels
-        //change opacity as centre changes
+        //labels change opacity as centre changes
         self.yesLabel.alpha = (self.center.x - 160.0f)/160.0f;
         self.noLabel.alpha = 0.0f;
         
@@ -143,6 +142,11 @@
         [self setTransform:CGAffineTransformMakeRotation(((self.center.x - 160.0f)/160.0f) * (2* M_PI/5))];
         // disappear by fading
         self.alpha = ((self.center.x-10)/160.0f);
+        //save the stack view from having too many subviews
+        if(self.alpha < 0.05)
+        {
+            [self removeFromSuperview];
+        }
         
     }
     
