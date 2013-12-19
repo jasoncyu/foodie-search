@@ -17,7 +17,7 @@
 @import CoreLocation;
 
 @interface FourSquare () <CLLocationManagerDelegate, NSURLConnectionDataDelegate>
-//@property CLLocationManager *locationManager;
+@property CLLocationManager *locationManager;
 @property CLLocation *location;
 
 @property NSURLConnection *venuesConnection;
@@ -32,11 +32,11 @@
 }
 - (id) init
 {
-    //    self.locationManager = [[CLLocationManager alloc] init];
-    //    self.locationManager.delegate = self;
-    //    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    //    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //    [self.locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
@@ -45,6 +45,7 @@
     return self;
 }
 
+#pragma mark - URLs
 + (NSString *)photoSeachURLForVenue:(FourSquareVenue *)venue
 {
     NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@/photos?client_id=%@&client_secret=%@&v=%@", venue.id, CLIENT_ID, CLIENT_SECRET, @"20131123"];
@@ -66,11 +67,40 @@
     return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
+#pragma mark - Venues
+- (void)getVenuesForTerm:(NSString *)term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock
 {
-    //TODO: don't hardcode this
+    if (![CLLocationManager locationServicesEnabled]) {
+        ULog(@"Location services disabled.");
+        return;
+    }
     
-    NSString *location = @"Claremont, CA";
+    #if TARGET_IPHONE_SIMULATOR
+    self.location = [[CLLocation alloc] initWithLatitude:34.109941 longitude:-117.704636];
+    #endif
+    
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    __block NSString *cityState;
+    
+    [geoCoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error != nil) {
+            NSString *errorMessage = [NSString stringWithFormat:@"%@: %@", [error localizedDescription], [error localizedFailureReason]];
+            DLog(@"%@", errorMessage);
+        }
+        
+        if (placemarks && [placemarks count] > 0) {
+            CLPlacemark *placemark = placemarks[0];
+            cityState = [NSString stringWithFormat:@"%@, %@", [placemark locality], [placemark administrativeArea]];
+        } else {
+            DLog(@"address not found for this location");
+        }
+        
+        [self getVenuesForTerm:term location:cityState completionBlock:completionBlock];
+    }];
+}
+
+- (void)getVenuesForTerm:(NSString *) term location:(NSString *)location completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
+{
     NSString *searchURL = [FourSquare fourSquareSearchURLForSearchTerm:term near:location];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:[NSURL URLWithString:searchURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -145,6 +175,7 @@
     [dataTask resume];
 }
 
+#pragma mark - Photos
 - (void)photosForVenue:(FourSquareVenue *)venue completion:(void(^)(NSMutableArray *photos))completion
 {
     NSString *searchURL = [FourSquare photoSeachURLForVenue:venue];
@@ -175,10 +206,12 @@
     [dataTask resume];
 }
 
-- (void)getPhotosForTerm:(NSString *)term completion:(FourSquarePhotoCompletionBlock)completion
+- (void)getPhotosForTerm:(NSString *)term location:(NSString *)location
+              completion:(FourSquarePhotoCompletionBlock)completion
 {
     DLog();
-    [self getVenuesForTerm:term completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
+    
+    FourSquareVenueSearchCompletionBlock venueCompletion = ^(NSString *searchTerm, NSArray *venues, NSError *error) {
         if (error) {
             completion(nil, error);
             return;
@@ -191,7 +224,7 @@
                                        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Have you tried turning it off and on again?", nil)
                                        };
             NSError *error = [NSError errorWithDomain:@"Foodie"
-                                                 code:-57 
+                                                 code:-57
                                              userInfo:userInfo];
             completion(nil, error);
             return;
@@ -209,7 +242,14 @@
                     [self randomImagesWithPhotos:outerPhotos completion:completion];
                 }
             }];
-        }}];
+        }};
+    
+    if ([location length] > 0) {
+        [self getVenuesForTerm:term location:location completionBlock:venueCompletion];
+    } else {
+        [self getVenuesForTerm:term completionBlock:venueCompletion];
+    }
+    
 }
 
 //Download images from links in random order
@@ -222,7 +262,7 @@
             //                NSLog(@"received size: %lu", (unsigned long)receivedSize);
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
             if (error) {
-                ULog(@"No photos found");
+                DLog(@"No photos found");
                 return;
             }
             
@@ -231,16 +271,17 @@
                 
                 completion(photo, error);
             } else {
-                ULog(@"no image");
+                DLog(@"no image");
             }
         }];
     }
 }
 
 # pragma mark - CLLocationManagerDelegate methods
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-//{
-//    self.location = [locations lastObject];
-//}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.location = [locations lastObject];
+}
 
 @end

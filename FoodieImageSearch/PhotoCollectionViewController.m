@@ -17,12 +17,13 @@
 
 @import SystemConfiguration;
 
-@interface PhotoCollectionViewController () <UISearchBarDelegate, PhotoDetailViewControllerDelegate>
+@interface PhotoCollectionViewController () <UISearchBarDelegate, UITextFieldDelegate, PhotoDetailViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *locationSearchBar;
 
 @property NSMutableArray *images;
 
@@ -83,32 +84,43 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self searchTerm:self.searchBar.text location:self.locationSearchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchTerm:(NSString *)searchTerm location:(NSString *)location
+{
     self.fourSquarePhotos = [@[] mutableCopy];
-    NSString *searchTerm = searchBar.text;
-    [self.searchBar resignFirstResponder];
     [self showLoadingView];
     
-    FourSquare *fs = [[FourSquare alloc] init];
-    [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
+    FourSquarePhotoCompletionBlock completion = ^(FourSquarePhoto *photo, NSError *error) {
         if (error) {
             [self presentErrorMessage:[error localizedDescription]];
             return;
         }
         [self.fourSquarePhotos addObject:photo];
-        if ([self.fourSquarePhotos count] % 9 == 0) {
-            NSMutableArray *indexPaths = [NSMutableArray array];
-            for (unsigned long i = [self.fourSquarePhotos count] - 9; i < [self.fourSquarePhotos count]; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-                [indexPaths addObject:indexPath];
-            }
-            [self.collectionView insertItemsAtIndexPaths:indexPaths];
-        }
+
+        //better user experience, but causes crash if search is performed
+        //while images are loading
+//        if ([self.fourSquarePhotos count] % 9 == 0) {
+//            NSMutableArray *indexPaths = [NSMutableArray array];
+//            for (unsigned long i = [self.fourSquarePhotos count] - 9; i < [self.fourSquarePhotos count]; i++) {
+//                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+//                [indexPaths addObject:indexPath];
+//            }
+//            [self.collectionView insertItemsAtIndexPaths:indexPaths];
+//        }
+//        
+        
+        [self.collectionView reloadData];
         [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-    }];
+    };
+    
+    FourSquare *fs = [[FourSquare alloc] init];
+    [fs getPhotosForTerm:searchTerm location:location completion:completion];
     
     [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 }
-
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
@@ -130,6 +142,12 @@
     [self.loadingView addSubview: progress];
     [progress startAnimating];
     [self.loadingView show];
+}
+
+#pragma mark - UITextFieldDelegate methods
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
 }
 
 #pragma mark - PhotoDetailViewControllerDelegate methods
