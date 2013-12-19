@@ -160,7 +160,7 @@
                          animations:^(void)
         {
             self.imageView.alpha = 0.4;
-            [self setTransform:CGAffineTransformMakeScale(0.2, 0.2)];
+            [self setTransform:CGAffineTransformMakeScale(0.3, 0.3)];
             //[self setTransform:CGAffineTransformMakeTranslation(-self.center.x+10, -self.center.y+10)];
             self.center = CGPointMake(20,20);
             

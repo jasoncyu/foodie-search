@@ -8,6 +8,7 @@
 
 #import "PhotoDetailViewController.h"
 #import "RestaurantDetailsViewController.h"
+#import "BackgroundLayer.h"
 
 @interface PhotoDetailViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
@@ -39,6 +40,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
+    bgLayer.frame = self.view.bounds;
+    bgLayer.backgroundFilters
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    
     // Do any additional setup after loading the view from its nib.
     self.imageView.image = self.fourSquarePhoto.photo;
     //Styling (\TODO: refactor the styel code; it is quite redundant)

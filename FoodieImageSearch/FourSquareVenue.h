@@ -17,6 +17,7 @@
 @property NSMutableArray *categories;
 //FourSquarePhoto
 @property NSMutableArray *photos;
+
 //A message describing if the restaurant is open/closed
 @property NSString *openString;
 @property CLLocationCoordinate2D location;

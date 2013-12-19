@@ -12,7 +12,7 @@
 
 @import CoreLocation;
 @import MapKit;
-
+#import "BackgroundLayer.h"
 #define METERS_PER_MILE 1609.344
 
 @interface RestaurantDetailsViewController () <MKMapViewDelegate>
@@ -40,8 +40,13 @@
     //Nav bar
     [self.navigationItem setTitle:self.venue.name];
     
-    //Map view
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    //Background
+    CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    
+    //Map view - leaves 0px for info display
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height))];
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
@@ -71,6 +76,7 @@
         categoryRowX += category.icon.size.width + 10;
     }
     
+
     //open/closed
     float openLabelY = categoryRowY + 50;
     UILabel *openLabel = [[UILabel alloc] initWithFrame:CGRectMake(categoryRowX, openLabelY, 100, 30)];
@@ -79,10 +85,11 @@
     
     //view this restaurant in foursquare
     float y = openLabelY + 50;
-    UIButton *openInFourSquareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y, 50, 50)];
+    UIButton *openInFourSquareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, y, 40, 40)];
     UIImage *fourSquareIcon = [UIImage imageNamed:@"foursquare-icon"];
+    
     [openInFourSquareButton setImage:fourSquareIcon forState:UIControlStateNormal];
-    [openInFourSquareButton setCenter:self.view.center];
+    //[openInFourSquareButton setCenter:self.view.center];
     [openInFourSquareButton addTarget:self action:@selector(openInFourSquare) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:openInFourSquareButton];
     
@@ -105,13 +112,16 @@
             canOpenURL:[NSURL URLWithString:@"foursquare:"]];
 }
 
-- (void)openInFourSquare {
-	if ([self isFourSquareInstalled]) {
-		// Call into the Yelp app
+- (void)openInFourSquare
+{
+	if ([self isFourSquareInstalled])
+    {
+		// Call into the Foursquare app
         NSString *url = [NSString stringWithFormat:@"foursquare://venues/%@", self.venue.id];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-    } else {
-		// Use the Yelp touch site
+    } else
+    {
+		// Use the Foursquare touch site
         NSString *url = [NSString stringWithFormat:@"http://foursquare.com/venue/%@", self.venue.id];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 	}
