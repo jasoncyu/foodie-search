@@ -16,7 +16,7 @@ typedef void (^FourSquarePhotoCompletionBlock)(FourSquarePhoto *photo, NSError *
 typedef void (^PhotosDownloadedBlock)();
 
 @interface FourSquare : NSObject
-- (void)getVenuesForTerm:(NSString *) term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock;
 - (void)getVenueForId:(NSString *)id completionBlock:(FourSquareVenueDetailsCompletionBlock) completionBlock;
-- (void)getPhotosForTerm:(NSString *)term completion:(FourSquarePhotoCompletionBlock)completion;
+- (void)getPhotosForTerm:(NSString *)term location:(NSString *)location
+              completion:(FourSquarePhotoCompletionBlock)completion;
 @end

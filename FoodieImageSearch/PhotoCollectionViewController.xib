@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoCollectionViewController">
             <connections>
                 <outlet property="collectionView" destination="T8L-V6-d3n" id="cOK-rd-YnT"/>
-                <outlet property="locationSearchTextField" destination="ISR-ga-wCY" id="1PR-gG-vlB"/>
+                <outlet property="locationSearchBar" destination="Aet-om-b5S" id="hBs-S4-CqQ"/>
                 <outlet property="searchBar" destination="tGI-Dd-ekZ" id="k2T-vx-SGO"/>
                 <outlet property="view" destination="1" id="0Li-7K-5ZX"/>
             </connections>
@@ -41,12 +41,14 @@
                         <outlet property="delegate" destination="-1" id="lHM-By-MqQ"/>
                     </connections>
                 </searchBar>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISR-ga-wCY">
-                    <rect key="frame" x="0.0" y="70" width="320" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Location..." translatesAutoresizingMaskIntoConstraints="NO" id="Aet-om-b5S">
+                    <rect key="frame" x="0.0" y="70" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
-                </textField>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="soI-u5-yTa"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

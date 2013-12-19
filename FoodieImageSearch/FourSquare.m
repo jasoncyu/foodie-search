@@ -45,6 +45,7 @@
     return self;
 }
 
+#pragma mark - URLs
 + (NSString *)photoSeachURLForVenue:(FourSquareVenue *)venue
 {
     NSString *url = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@/photos?client_id=%@&client_secret=%@&v=%@", venue.id, CLIENT_ID, CLIENT_SECRET, @"20131123"];
@@ -66,6 +67,7 @@
     return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
+#pragma mark - Venues
 - (void)getVenuesForTerm:(NSString *)term completionBlock:(FourSquareVenueSearchCompletionBlock)completionBlock
 {
     if (![CLLocationManager locationServicesEnabled]) {
@@ -173,6 +175,7 @@
     [dataTask resume];
 }
 
+#pragma mark - Photos
 - (void)photosForVenue:(FourSquareVenue *)venue completion:(void(^)(NSMutableArray *photos))completion
 {
     NSString *searchURL = [FourSquare photoSeachURLForVenue:venue];
@@ -203,10 +206,12 @@
     [dataTask resume];
 }
 
-- (void)getPhotosForTerm:(NSString *)term completion:(FourSquarePhotoCompletionBlock)completion
+- (void)getPhotosForTerm:(NSString *)term location:(NSString *)location
+              completion:(FourSquarePhotoCompletionBlock)completion
 {
     DLog();
-    [self getVenuesForTerm:term completionBlock:^(NSString *searchTerm, NSArray *venues, NSError *error) {
+    
+    FourSquareVenueSearchCompletionBlock venueCompletion = ^(NSString *searchTerm, NSArray *venues, NSError *error) {
         if (error) {
             completion(nil, error);
             return;
@@ -219,7 +224,7 @@
                                        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Have you tried turning it off and on again?", nil)
                                        };
             NSError *error = [NSError errorWithDomain:@"Foodie"
-                                                 code:-57 
+                                                 code:-57
                                              userInfo:userInfo];
             completion(nil, error);
             return;
@@ -237,7 +242,14 @@
                     [self randomImagesWithPhotos:outerPhotos completion:completion];
                 }
             }];
-        }}];
+        }};
+    
+    if ([location length] > 0) {
+        [self getVenuesForTerm:term location:location completionBlock:venueCompletion];
+    } else {
+        [self getVenuesForTerm:term completionBlock:venueCompletion];
+    }
+    
 }
 
 //Download images from links in random order
@@ -250,7 +262,7 @@
             //                NSLog(@"received size: %lu", (unsigned long)receivedSize);
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
             if (error) {
-                ULog(@"No photos found");
+                DLog(@"No photos found");
                 return;
             }
             
@@ -259,7 +271,7 @@
                 
                 completion(photo, error);
             } else {
-                ULog(@"no image");
+                DLog(@"no image");
             }
         }];
     }
