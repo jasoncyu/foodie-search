@@ -36,7 +36,7 @@
 @property NSMutableArray *fourSquarePhotos;
 
 //IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) IBOutlet UITextField *searchField;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 //@property NSMutableArray *images;
 -(void) reloadStackFromIndex: (NSInteger) index;

@@ -15,16 +15,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+  
     //create the tab bar controller object
     self.tabBarController = [[UITabBarController alloc] init];
     //create the first view controller
     UIViewController *cellModeVC = [[PhotoCollectionViewController alloc] initWithNibName:@"PhotoCollectionViewController" bundle:nil];
     //    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
-    
-    //    older config:
-    //self.window.rootViewController = cellModeVC;
-    
+
     [cellModeVC.view setBackgroundColor:[UIColor whiteColor]];
     [cellModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the red view's representation on the tab bar
@@ -47,7 +44,9 @@
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:cellModeVC, swipeModeVC, nil] animated:YES];
     //This styling thing breaks for some reason
     //self.tabBarController.tabBar.barStyle = UIBarStyleBlackTranslucent;
-    //add the tabbarcontroller as the root view for the App
+    
+    
+    //Now, we can let fake view go and add the tabbarcontroller as the root view for the App
     [self.window setRootViewController:self.tabBarController];
     
     [self.window makeKeyAndVisible];
