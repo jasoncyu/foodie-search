@@ -25,9 +25,8 @@
     [cellModeVC.view setBackgroundColor:[UIColor whiteColor]];
     [cellModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the red view's representation on the tab bar
-    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scroll" image:nil tag:1];
-    
-    
+    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scroll" image:[UIImage imageNamed:@"foursquare-icon"] tag:1];//@"Assets/ScrollButton.png"] tag:1];
+
     //create the second view controller
     /*\TODO actually it should be its own controller*/
     UIViewController * swipeModeVC =[[PhotoSwipeViewController alloc] initWithNibName:@"PhotoSwipeViewController" bundle:nil];
@@ -39,12 +38,13 @@
     [swipeModeVC.view setBackgroundColor:[UIColor grayColor]];
     [swipeModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the second view's representation on the tab bar
-    swipeModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Swipe" image:nil tag:2];
+    swipeModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Swipe" image:[UIImage imageNamed:@"Assets/SwipeButton.png"] tag:2];
+    //barStyle = UIBarStyleBlackTranslucent;
     //add the viewcontrollers to the tab bar
     [self.tabBarController setViewControllers:[NSArray arrayWithObjects:cellModeVC, swipeModeVC, nil] animated:YES];
     //This styling thing breaks for some reason
-    //self.tabBarController.tabBar.barStyle = UIBarStyleBlackTranslucent;
-    
+    //setBackgroundImage:[UIImage imageNamed:@"ScrollButton.png" ]];
+
     
     //Now, we can let fake view go and add the tabbarcontroller as the root view for the App
     [self.window setRootViewController:self.tabBarController];

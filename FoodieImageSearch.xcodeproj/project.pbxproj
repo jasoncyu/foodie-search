@@ -56,6 +56,8 @@
 		20CFBD1C184D58D80062F715 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CFBD1A184D58D80062F715 /* RestaurantDetailsViewController.m */; };
 		20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */; };
 		20EE8D0B184F11DD008F79B4 /* foursquare-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */; };
+		920BD0DD1863865800332C15 /* ScrollButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 920BD0DC1863865800332C15 /* ScrollButton.png */; };
+		920BD0E3186389AF00332C15 /* SwipeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 920BD0E2186389AF00332C15 /* SwipeButton.png */; };
 		928E5317184F2D7000AB5490 /* PhotoSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */; };
 		928E5318184F2D7000AB5490 /* PhotoSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */; };
 		928E531B184F2FF100AB5490 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 928E531A184F2FF100AB5490 /* DraggableView.m */; };
@@ -113,10 +115,10 @@
 		209336991841947D008EFEBD /* FoodieImageSearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodieImageSearch-Prefix.pch"; sourceTree = "<group>"; };
 		2093369A1841947D008EFEBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2093369B1841947D008EFEBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2093369E1841947D008EFEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2093369E1841947D008EFEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		209336A01841947D008EFEBD /* PhotoCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewController.h; sourceTree = "<group>"; };
 		209336A11841947D008EFEBD /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
-		209336A31841947D008EFEBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		209336A31841947D008EFEBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images.xcassets; sourceTree = "<group>"; };
 		209336A91841947D008EFEBD /* FoodieImageSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodieImageSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		209336AA1841947D008EFEBD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		209336B21841947D008EFEBD /* FoodieImageSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodieImageSearchTests-Info.plist"; sourceTree = "<group>"; };
@@ -174,6 +176,8 @@
 		20CFBD1B184D58D80062F715 /* RestaurantDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RestaurantDetailsViewController.xib; path = ../RestaurantDetailsViewController.xib; sourceTree = "<group>"; };
 		20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foursquare-icon.png"; path = "FoodieImageSearch/foursquare-icon.png"; sourceTree = "<group>"; };
 		20F51C2F184F1FD2009FCC16 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		920BD0DC1863865800332C15 /* ScrollButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScrollButton.png; sourceTree = "<group>"; };
+		920BD0E2186389AF00332C15 /* SwipeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwipeButton.png; sourceTree = "<group>"; };
 		928E5314184F2D7000AB5490 /* PhotoSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSwipeViewController.h; sourceTree = "<group>"; };
 		928E5315184F2D7000AB5490 /* PhotoSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSwipeViewController.m; sourceTree = "<group>"; };
 		928E5316184F2D7000AB5490 /* PhotoSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSwipeViewController.xib; sourceTree = "<group>"; };
@@ -427,6 +431,8 @@
 		20EE8D09184F11AE008F79B4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				920BD0E2186389AF00332C15 /* SwipeButton.png */,
+				920BD0DC1863865800332C15 /* ScrollButton.png */,
 				20EE8D0A184F11DD008F79B4 /* foursquare-icon.png */,
 			);
 			name = Assets;
@@ -540,9 +546,11 @@
 			files = (
 				20CFBD1D184D58D80062F715 /* RestaurantDetailsViewController.xib in Resources */,
 				20EE8D0B184F11DD008F79B4 /* foursquare-icon.png in Resources */,
+				920BD0DD1863865800332C15 /* ScrollButton.png in Resources */,
 				20C739BF184F209300182CFF /* .gitmodules in Resources */,
 				20C739CB184F209300182CFF /* LICENSE in Resources */,
 				209336A41841947D008EFEBD /* Images.xcassets in Resources */,
+				920BD0E3186389AF00332C15 /* SwipeButton.png in Resources */,
 				209336961841947D008EFEBD /* InfoPlist.strings in Resources */,
 				204FC43618459C250006A75D /* PhotoDetailViewController.xib in Resources */,
 				20C739CC184F209300182CFF /* README.md in Resources */,

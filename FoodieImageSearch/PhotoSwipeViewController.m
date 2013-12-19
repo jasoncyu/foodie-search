@@ -45,9 +45,6 @@
 @end
 
 
-
-
-
 @implementation PhotoSwipeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -89,18 +86,15 @@
             if (r==3)
             {
                 frame = CGRectMake(260-200 - 5*(j-index), 120-5*(j-index), 200, 200);
-                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
             }
             
             else
             {
                 frame = CGRectMake(160-100 - 5*(j-index), 120-5*(j-index), 200, 200);
-                //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*j, 120+10*j, 200, 200) image:readyImage];
+
             }
             
             DraggableView *tempView = [[DraggableView alloc] initWithFrame:frame andFourSquarePhoto:photoToAdd];
-            
-            //DraggableView *tempView = [[DraggableView alloc] initWithFrame:CGRectMake(160-100 - 5*i, 120+10*i, 200, 200) image:[UIImage  imageNamed:currentString]];
             
             
             //Stylin'
@@ -143,32 +137,60 @@
 }
 
 
-#pragma mark - UITextFieldDelegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == self.searchField) {
-        self.fourSquarePhotos = [@[] mutableCopy];
-        NSString *searchTerm = textField.text;
-        [self.searchField resignFirstResponder];
-        [self showLoadingView];
-        
-        FourSquare *fs = [[FourSquare alloc] init];
-        [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) {
-            if (photo)
-            {
-                [self.fourSquarePhotos addObject:photo];
-            }
-            [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 
-            if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
-            {
-                [self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
-            }
-        }];
-    }
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    self.fourSquarePhotos = [@[] mutableCopy];
+    NSString *searchTerm = searchBar.text;
+    [self.searchBar resignFirstResponder];
+    [self showLoadingView];
     
-    return YES;
+    FourSquare *fs = [[FourSquare alloc] init];
+    [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) 
+	{
+        if (error) 
+		{
+            [self presentErrorMessage:[error localizedDescription]];
+            return;
+        }
+        [self.fourSquarePhotos addObject:photo];
+		if ((self.fourSquarePhotos.count)>0 &&(self.fourSquarePhotos.count)%8 == 0)
+		{
+			[self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
+		}
+        /*if ([self.fourSquarePhotos count] % 9 == 0) 
+		{
+            NSMutableArray *indexPaths = [NSMutableArray array];
+            for (unsigned long i = [self.fourSquarePhotos count] - 9; i < [self.fourSquarePhotos count]; i++) 
+			{
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+                [indexPaths addObject:indexPath];
+            }
+            [self.collectionView insertItemsAtIndexPaths:indexPaths];
+        }*/
+		
+        [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+    }];
+    
+    [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
 }
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
+}
+
+
 
 - (void)showLoadingView
 {
@@ -209,6 +231,17 @@
 -(void)dismissMe
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - Error handling
+- (void) presentErrorMessage:(NSString *)message {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 

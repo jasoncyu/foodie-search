@@ -1,0 +1,200 @@
+TFoodieImageSearch
+v7
+r1
+cCheck dependencies
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/../PhotoDetailViewController.xib
+c0000000052B2C0AD00000000000010C9
+t1387446445
+s4297
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/../RestaurantDetailsViewController.xib
+c00000000529E9B9C000000000000051D
+t1386126236
+s1309
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/Base.lproj/Main.storyboard
+c00000000529D29E80000000000000721
+t1386031592
+s1825
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/Images.xcassets
+c00000000529D29E80000000000000088
+t1386031592
+s136
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/PhotoCollectionViewController.xib
+c0000000052B2CBFA0000000000000DAD
+t1387449338
+s3501
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/PhotoSwipeViewController.xib
+c0000000052B2CBFA0000000000000D4B
+t1387449338
+s3403
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/en.lproj/InfoPlist.strings
+c00000000529D29E8000000000000002D
+t1386031592
+s45
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/foursquare-icon.png
+c00000000529EDEC2000000000000BFEA
+t1386143426
+s49130
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/PhotoCell.xib
+c00000000529EC74C0000000000000817
+t1386137420
+s2071
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/SDWebImage/.gitignore
+c00000000529F9C1C00000000000000D6
+t1386191900
+s214
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/SDWebImage/.gitmodules
+c00000000529F9C1C0000000000000066
+t1386191900
+s102
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/SDWebImage/LICENSE
+c00000000529F9C1C000000000000043C
+t1386191900
+s1084
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/SDWebImage/README.md
+c00000000529F9C1C00000000000029D7
+t1386191900
+s10711
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/SDWebImage/SDWebImage.podspec
+c00000000529F9C1C000000000000069C
+t1386191900
+s1692
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Info.plist
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/.gitignore
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/.gitmodules
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/Base.lproj/Main.storyboard
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/Images.xcassets
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/LICENSE
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/PhotoCell.nib
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/PhotoCollectionViewController.nib
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/PhotoDetailViewController.nib
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/PhotoSwipeViewController.nib
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/README.md
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/RestaurantDetailsViewController.nib
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/SDWebImage.podspec
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/foursquare-icon.png
+t2
+s0
+
+NFoodieImageSearch/FoodieImageSearch-Info.plist
+c00000000529D29E800000000000004BF
+t1386031592
+s1215
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies409173796#409173796#0(63"[BEROR]error: There is no SDK with the name or path 'iphoneos'1(4@55"error: There is no SDK with the name or path 'iphoneos'409173796#18446744073709551615#0#0(1@0"0(0#1#0"17205092608#0"0#
+
+CCompileXIB /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/../PhotoDetailViewController.xib
+r0
+
+CCompileXIB /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/../RestaurantDetailsViewController.xib
+r0
+
+CCompileXIB /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/PhotoCollectionViewController.xib
+r0
+
+CCompileXIB /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/FoodieImageSearch/PhotoSwipeViewController.xib
+r0
+
+CCompileXIB /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/PhotoCell.xib
+r0
+
+CCopyStringsFile /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Resources/en.lproj/InfoPlist.strings FoodieImageSearch/en.lproj/InfoPlist.strings
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/.gitignore SDWebImage/.gitignore
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/.gitmodules SDWebImage/.gitmodules
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/Base.lproj/Main.storyboard FoodieImageSearch/Base.lproj/Main.storyboard
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/Images.xcassets FoodieImageSearch/Images.xcassets
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/LICENSE SDWebImage/LICENSE
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/README.md SDWebImage/README.md
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/SDWebImage.podspec SDWebImage/SDWebImage.podspec
+r0
+
+CCpResource build/Debug/FoodieImageSearch.app/Contents/Resources/foursquare-icon.png FoodieImageSearch/foursquare-icon.png
+r0
+
+CProcessInfoPlistFile /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app/Contents/Info.plist FoodieImageSearch/FoodieImageSearch-Info.plist
+r0
+
+CTouch /Users/xinleixu/Desktop/CodingCourses/181H/foodie-search/build/Debug/FoodieImageSearch.app
+r0
+
