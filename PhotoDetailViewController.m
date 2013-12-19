@@ -43,7 +43,6 @@
     
     CAGradientLayer *bgLayer = [BackgroundLayer greyGradient];
     bgLayer.frame = self.view.bounds;
-    bgLayer.backgroundFilters
     [self.view.layer insertSublayer:bgLayer atIndex:0];
     
     // Do any additional setup after loading the view from its nib.
