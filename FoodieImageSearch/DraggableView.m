@@ -164,9 +164,9 @@
                          animations:^(void)
         {
             self.imageView.alpha = 0.4;
-            [self setTransform:CGAffineTransformMakeScale(0.3, 0.3)];
+            [self setTransform:CGAffineTransformMakeScale(0.25, 0.25)];
             //[self setTransform:CGAffineTransformMakeTranslation(-self.center.x+10, -self.center.y+10)];
-            self.center = CGPointMake(20,20);
+            self.center = CGPointMake(40,100);
             
             self.checkedLabel.font = [UIFont fontWithName:@"Helvetica" size:36];
             self.checkedLabel.textAlignment = NSTextAlignmentCenter;
