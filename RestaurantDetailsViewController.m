@@ -41,7 +41,7 @@
     
     
     //Map view - leaves 0px for info display
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height)-100)];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height))];
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     

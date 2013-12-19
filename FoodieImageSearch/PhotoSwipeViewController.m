@@ -35,8 +35,9 @@
 @property UIAlertView *loadingView;
 @property NSMutableArray *fourSquarePhotos;
 
-//IBOutlet UISearchBar *searchBar;
+
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *locationSearchBar;
 
 //@property NSMutableArray *images;
 -(void) reloadStackFromIndex: (NSInteger) index;
@@ -136,20 +137,14 @@
     [super viewDidLoad];
 }
 
-
-
-#pragma mark - UISearchBarDelegate
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)searchTerm:(NSString *)searchTerm location:(NSString *)location
 {
     self.fourSquarePhotos = [@[] mutableCopy];
-    NSString *searchTerm = searchBar.text;
-    [self.searchBar resignFirstResponder];
     [self showLoadingView];
     
-    FourSquare *fs = [[FourSquare alloc] init];
-    [fs getPhotosForTerm:searchTerm completion:^(FourSquarePhoto *photo, NSError *error) 
+    FourSquarePhotoCompletionBlock completion= ^(FourSquarePhoto *photo, NSError *error)
 	{
-        if (error) 
+        if (error)
 		{
             [self presentErrorMessage:[error localizedDescription]];
             return;
@@ -159,21 +154,20 @@
 		{
 			[self reloadStackFromIndex:((self.fourSquarePhotos.count-8))];
 		}
-        /*if ([self.fourSquarePhotos count] % 9 == 0) 
-		{
-            NSMutableArray *indexPaths = [NSMutableArray array];
-            for (unsigned long i = [self.fourSquarePhotos count] - 9; i < [self.fourSquarePhotos count]; i++) 
-			{
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-                [indexPaths addObject:indexPath];
-            }
-            [self.collectionView insertItemsAtIndexPaths:indexPaths];
-        }*/
-		
         [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
-    }];
+    };
+    FourSquare *fs = [[FourSquare alloc] init];
+    [fs getPhotosForTerm:searchTerm location:location completion:completion];
     
     [self.loadingView dismissWithClickedButtonIndex:-1 animated:YES];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self searchTerm:self.searchBar.text location:self.locationSearchBar.text];
+    [self.searchBar resignFirstResponder];
+    
 }
 
 

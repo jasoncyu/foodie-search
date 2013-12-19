@@ -25,7 +25,7 @@
     [cellModeVC.view setBackgroundColor:[UIColor whiteColor]];
     [cellModeVC.view setFrame:[[UIScreen mainScreen] bounds]];
     //this is where we set the red view's representation on the tab bar
-    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scroll" image:[UIImage imageNamed:@"foursquare-icon"] tag:1];//@"Assets/ScrollButton.png"] tag:1];
+    cellModeVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Scroll" image:[UIImage imageNamed:@"Assets/ScrollButton.png"] tag:1];
 
     //create the second view controller
     /*\TODO actually it should be its own controller*/
