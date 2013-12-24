@@ -28,7 +28,7 @@
 #import "BackgroundLayer.h"
 @import SystemConfiguration;
 
-@interface PhotoSwipeViewController () <UITextFieldDelegate, PhotoDetailViewControllerDelegate>
+@interface PhotoSwipeViewController () <UISearchBarDelegate, UITextFieldDelegate, PhotoDetailViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIView *stackView;
@@ -166,9 +166,9 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self searchTerm:self.searchBar.text location:self.locationSearchBar.text];
-    [self.searchBar resignFirstResponder];
-    
+    [searchBar resignFirstResponder];
 }
+
 
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
